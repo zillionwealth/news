@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZILLION | 長者生活津貼 × FWD 盈一生年金規劃計算器</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
+            serif: ['"Playfair Display"', '"Noto Sans TC"', 'serif'],
+          },
+          colors: {
+            zc: {
+              blue: '#449bb0',
+              darkBlue: '#1b2a41',
+              orange: '#ffbd59',
+              grey: '#ebebeb',
+              fwd: '#E87722'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ebebeb;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #449bb0;
+      border-radius: 9999px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 9999px;
+      background: #d6d6d6;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -6px;
+      background-color: #ffbd59;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      border: 2.5px solid #1b2a41;
+      box-shadow: 0 2px 8px rgba(27, 42, 65, 0.25);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .zc-accent-text {
+      color: #ffbd59;
+    }
+    .zc-card-shadow {
+      box-shadow: 0 10px 30px -10px rgba(27, 42, 65, 0.18);
+    }
+  </style>
+</head>
+<body class="bg-[#ebebeb] text-[#1b2a41] antialiased selection:bg-[#ffbd59] selection:text-[#1b2a41]">
+
+  <!-- Top Zillion Brand Header -->
+  <header class="bg-[#1b2a41] text-white border-b border-white/10 sticky top-0 z-30 backdrop-blur-md bg-[#1b2a41]/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#449bb0] to-[#ffbd59] p-[1.5px] shadow-lg">
+          <div class="w-full h-full bg-[#1b2a41] rounded-[10.5px] flex items-center justify-center">
+            <span class="font-serif font-bold text-xl text-[#ffbd59] tracking-wider">Z</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-serif font-bold tracking-[0.18em] text-base sm:text-lg text-white">ZILLION CREW</span>
+            <span class="hidden sm:inline-block text-[10px] uppercase tracking-[0.18em] px-2.5 py-0.5 rounded-full border border-[#449bb0]/60 text-[#ffbd59] bg-[#449bb0]/20">Wealth Advisory</span>
+          </div>
+          <p class="text-[11px] text-slate-300 tracking-wide">退休現金流與社會保障資產配置系統（官方建議書精算版）</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <div class="hidden md:flex flex-col text-right mr-2">
+          <span class="text-[11px] text-slate-300">社署長生津標準（2026年2月生效）</span>
+          <span class="text-xs font-semibold text-[#ffbd59]">每月津貼 HK$4,345 / 合資格長者</span>
+        </div>
+        <button onclick="openRuleModal()" class="text-xs sm:text-sm px-3.5 py-2 rounded-xl bg-[#449bb0] hover:bg-[#388699] text-white font-medium shadow-sm transition flex items-center space-x-1.5">
+          <svg class="w-4 h-4 text-[#ffbd59]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>社署規則 & 全年齡精算表</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="bg-[#1b2a41] text-white pt-8 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#449bb0 1.2px, transparent 1.2px); background-size: 26px 26px;"></div>
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <div>
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#449bb0]/20 border border-[#449bb0]/50 text-[#ffbd59] text-xs font-medium mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ffbd59] animate-pulse"></span>
+          <span>已同步 FWD「盈‧一生」2026年11月版全系列官方建議書數據</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
+          長者生活津貼 × <span class="text-[#ffbd59]">FWD 盈一生年金</span> 規劃計算器
+        </h1>
+        <p class="mt-2.5 text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
+          根據社署《長者生活津貼》規定，購買年金的保費可獲 100% 豁免計入資產總值。支援 <strong class="text-white">40至85歲（下次生日年齡41–86歲）</strong> 男女及不同供款年期即時精算。
+        </p>
+      </div>
+
+      <!-- Quick Preset Scenarios -->
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-xs text-slate-300 w-full sm:w-auto mb-1 sm:mb-0">快速情境測試：</span>
+        <button onclick="applyPreset('singleOver')" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#449bb0]/40 border border-white/15 text-white transition">
+          65歲單身男｜資產143萬
+        </button>
+        <button onclick="applyPreset('coupleOver')" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#449bb0]/40 border border-white/15 text-white transition">
+          70歲夫婦｜資產165萬
+        </button>
+        <button onclick="applyPreset('preRetire63')" class="text-xs px-3 py-1.5 rounded-lg bg-[#ffbd59] hover:bg-[#f5b042] text-[#1b2a41] font-bold shadow-sm transition">
+          ★ 63歲準退休｜2年繳部署
+        </button>
+        <button onclick="applyPreset('preRetire60')" class="text-xs px-3 py-1.5 rounded-lg bg-[#ffbd59] hover:bg-[#f5b042] text-[#1b2a41] font-bold shadow-sm transition">
+          ★ 60歲準退休｜5年繳部署
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-16 relative z-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+
+      <!-- LEFT COLUMN: Client Profile & Financial Inputs (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-5 sm:p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-[#ebebeb]">
+            <div class="flex items-center space-x-2.5">
+              <span class="w-7 h-7 rounded-lg bg-[#1b2a41] text-[#ffbd59] flex items-center justify-center font-bold text-xs">01</span>
+              <h2 class="text-base sm:text-lg font-bold text-[#1b2a41]">客戶基本資料與現有財務</h2>
+            </div>
+            <button onclick="resetForm()" class="text-xs text-[#449bb0] hover:text-[#1b2a41] font-medium transition">重設數值</button>
+          </div>
+
+          <div class="mt-5 space-y-4">
+            <!-- Marital Status & Gender -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-2">申請類別（社署審查單位）</label>
+                <div class="grid grid-cols-2 gap-2 p-1 bg-[#ebebeb] rounded-xl">
+                  <button type="button" id="btn-single" onclick="setStatus('single')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition bg-[#1b2a41] text-white shadow-sm">
+                    單身人士
+                  </button>
+                  <button type="button" id="btn-couple" onclick="setStatus('couple')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:text-[#1b2a41]">
+                    夫婦合併
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-2">受保人性別</label>
+                <div class="grid grid-cols-2 gap-2 p-1 bg-[#ebebeb] rounded-xl">
+                  <button type="button" id="btn-male" onclick="setGender('male')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition bg-[#1b2a41] text-white shadow-sm">
+                    男性
+                  </button>
+                  <button type="button" id="btn-female" onclick="setGender('female')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:text-[#1b2a41]">
+                    女性
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Age & Payment Term Selector -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="select-age" class="block text-xs font-semibold text-slate-600 mb-1.5">
+                  投保年齡 <span class="text-slate-400 font-normal">(下次生日年齡 ANB)</span>
+                </label>
+                <select id="select-age" onchange="onAgeOrTermChange()"
+                  class="w-full px-3 py-2.5 bg-[#ebebeb]/50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-[#1b2a41] focus:outline-none focus:ring-2 focus:ring-[#449bb0]">
+                  <option value="41">40歲 (ANB 41歲)</option>
+                  <option value="46">45歲 (ANB 46歲)</option>
+                  <option value="51">50歲 (ANB 51歲)</option>
+                  <option value="56">55歲 (ANB 56歲)</option>
+                  <option value="61">60歲 (ANB 61歲)</option>
+                  <option value="62">61歲 (ANB 62歲)</option>
+                  <option value="63">62歲 (ANB 63歲)</option>
+                  <option value="64">63歲 (ANB 64歲)</option>
+                  <option value="65">64歲 (ANB 65歲)</option>
+                  <option value="66" selected>65歲 (ANB 66歲)</option>
+                  <option value="71">70歲 (ANB 71歲)</option>
+                  <option value="76">75歲 (ANB 76歲)</option>
+                  <option value="81">80歲 (ANB 81歲)</option>
+                  <option value="86">85歲 (ANB 86歲)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">
+                  保費供款年期 <span class="text-slate-400 font-normal">(盈一生選項)</span>
+                </label>
+                <div class="grid grid-cols-3 gap-1.5 p-1 bg-[#ebebeb] rounded-xl">
+                  <button type="button" id="btn-term-1" onclick="setPayTerm(1)" class="py-2 px-1.5 rounded-lg text-xs font-semibold transition bg-[#1b2a41] text-white shadow-sm">
+                    躉繳
+                  </button>
+                  <button type="button" id="btn-term-2" onclick="setPayTerm(2)" class="py-2 px-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-[#1b2a41]">
+                    2年繳
+                  </button>
+                  <button type="button" id="btn-term-5" onclick="setPayTerm(5)" class="py-2 px-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-[#1b2a41]">
+                    5年繳
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Age < 65 or Multi-Pay Notice -->
+            <div id="age-term-alert" class="hidden p-3 rounded-xl bg-[#449bb0]/10 border border-[#449bb0]/35 text-[11px] text-[#1b2a41] leading-relaxed">
+            </div>
+
+            <!-- Couple Eligible Count (Hidden when single) -->
+            <div id="couple-eligible-box" class="hidden p-3.5 rounded-xl bg-[#ffbd59]/15 border border-[#ffbd59]/50">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-semibold text-[#1b2a41] block">夫婦中符合長生津年齡資格人數</span>
+                  <span class="text-[11px] text-slate-600">若夫婦二人均滿65歲，每月合共可領取 HK$8,690</span>
+                </div>
+                <div class="flex space-x-1.5 bg-white p-1 rounded-lg border border-[#ffbd59]/60">
+                  <button type="button" id="btn-elig-1" onclick="setEligibleCount(1)" class="px-2.5 py-1 rounded-md text-xs font-semibold text-slate-600">1位</button>
+                  <button type="button" id="btn-elig-2" onclick="setEligibleCount(2)" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#1b2a41] text-white">2位</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Total Non-Exempt Assets -->
+            <div>
+              <div class="flex justify-between items-baseline mb-1.5">
+                <label for="input-assets" class="text-xs font-semibold text-slate-700">
+                  現有須計算資產總值 <span class="text-slate-400 font-normal">(港幣 HK$)</span>
+                </label>
+                <span id="limit-asset-badge" class="text-[11px] font-semibold text-[#1b2a41] bg-[#ffbd59]/25 px-2.5 py-0.5 rounded-md border border-[#ffbd59]/60">
+                  限額: HK$415,000
+                </span>
+              </div>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">HK$</span>
+                <input type="number" id="input-assets" value="1430000" step="10000" min="0" oninput="calculate()"
+                  class="w-full pl-12 pr-4 py-3 bg-[#ebebeb]/50 border border-slate-200 rounded-xl text-base font-bold text-[#1b2a41] focus:outline-none focus:ring-2 focus:ring-[#449bb0] focus:bg-white transition" />
+              </div>
+              <input type="range" id="slider-assets" min="0" max="10000000" step="50000" value="1430000" oninput="syncAssetFromSlider(this.value)" class="w-full mt-2" />
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>HK$0</span>
+                <span>HK$5,000,000</span>
+                <span>HK$10,000,000 (10M)</span>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-1">
+                * 包括銀行存款、股票、基金、非自住物業及保單現金價值（<span class="text-[#1b2a41] font-medium">自住物業已獲豁免，毋須計入</span>）。
+              </p>
+            </div>
+
+            <!-- Current Monthly Income -->
+            <div>
+              <div class="flex justify-between items-baseline mb-1.5">
+                <label for="input-income" class="text-xs font-semibold text-slate-700">
+                  現有每月總入息 <span class="text-slate-400 font-normal">(港幣 HK$)</span>
+                </label>
+                <span id="limit-income-badge" class="text-[11px] font-semibold text-[#1b2a41] bg-[#ffbd59]/25 px-2.5 py-0.5 rounded-md border border-[#ffbd59]/60">
+                  限額: HK$10,900 / 月
+                </span>
+              </div>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">HK$</span>
+                <input type="number" id="input-income" value="3500" step="500" min="0" oninput="calculate()"
+                  class="w-full pl-12 pr-4 py-3 bg-[#ebebeb]/50 border border-slate-200 rounded-xl text-base font-bold text-[#1b2a41] focus:outline-none focus:ring-2 focus:ring-[#449bb0] focus:bg-white transition" />
+              </div>
+              <input type="range" id="slider-income" min="0" max="100000" step="500" value="3500" oninput="syncIncomeFromSlider(this.value)" class="w-full mt-2" />
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>HK$0</span>
+                <span>HK$50,000</span>
+                <span>HK$100,000 / 月</span>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-1">
+                * 包括退休金/長俸、工作收入、收租淨收益及現有年金（存款利息及子女家用不計入入息）。
+              </p>
+            </div>
+
+            <!-- Premium Discount & Exchange Rate Bar -->
+            <div class="pt-3 border-t border-[#ebebeb] space-y-3">
+              <!-- Premium Discount (%) -->
+              <div class="p-3 rounded-xl bg-[#ffbd59]/15 border border-[#ffbd59]/50">
+                <div class="flex items-center justify-between mb-2">
+                  <div>
+                    <label for="input-discount" class="text-xs font-bold text-[#1b2a41] block">FWD 保費折扣優惠 (%)</label>
+                    <span class="text-[10px] text-slate-600">按總保費折實計算（年金派發按100%名義保費）</span>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <input type="number" id="input-discount" value="0" step="0.5" min="0" max="30" oninput="onDiscountInput()"
+                      class="w-16 px-2 py-1 text-right font-extrabold text-[#1b2a41] bg-white rounded-lg border border-[#ffbd59] focus:outline-none focus:ring-2 focus:ring-[#449bb0] text-xs" />
+                    <span class="text-xs font-bold text-[#1b2a41]">%</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-5 gap-1.5">
+                  <button type="button" onclick="setDiscount(0)" class="disc-btn py-1 rounded-md text-[11px] font-semibold bg-[#1b2a41] text-white transition" data-disc="0">0% (無)</button>
+                  <button type="button" onclick="setDiscount(3)" class="disc-btn py-1 rounded-md text-[11px] font-semibold bg-white text-slate-700 hover:bg-[#1b2a41]/10 border border-slate-200 transition" data-disc="3">3%</button>
+                  <button type="button" onclick="setDiscount(5)" class="disc-btn py-1 rounded-md text-[11px] font-semibold bg-white text-slate-700 hover:bg-[#1b2a41]/10 border border-slate-200 transition" data-disc="5">5%</button>
+                  <button type="button" onclick="setDiscount(8)" class="disc-btn py-1 rounded-md text-[11px] font-semibold bg-white text-slate-700 hover:bg-[#1b2a41]/10 border border-slate-200 transition" data-disc="8">8%</button>
+                  <button type="button" onclick="setDiscount(10)" class="disc-btn py-1 rounded-md text-[11px] font-semibold bg-white text-slate-700 hover:bg-[#1b2a41]/10 border border-slate-200 transition" data-disc="10">10%</button>
+                </div>
+              </div>
+
+              <!-- Exchange Rate -->
+              <div class="flex items-center justify-between text-xs text-slate-500">
+                <span>保單貨幣換算匯率 (USD : HKD)</span>
+                <div class="flex items-center space-x-1.5">
+                  <input type="number" id="input-fx" value="7.80" step="0.01" min="7.70" max="7.90" oninput="calculate()"
+                    class="w-16 px-2 py-1 text-right font-semibold text-[#1b2a41] bg-[#ebebeb] rounded-lg border border-slate-200 focus:outline-none focus:border-[#449bb0]" />
+                  <span class="text-[11px] text-slate-400">HKD</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Primary CTA Button -->
+            <button type="button" onclick="calculate(true)"
+              class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#1b2a41] via-[#263c5c] to-[#1b2a41] hover:from-[#449bb0] hover:to-[#357f91] text-white font-semibold text-sm sm:text-base shadow-lg shadow-[#1b2a41]/20 border border-[#449bb0]/40 flex items-center justify-center space-x-2 transition transform active:scale-[0.99]">
+              <svg class="w-5 h-5 text-[#ffbd59]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <span>一鍵精算長生津資格與年金方案</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic FWD Actuarial Reference Card -->
+        <div class="bg-[#1b2a41] text-white rounded-2xl p-5 border border-[#449bb0]/40 zc-card-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-zc-fwd text-white text-[11px] font-bold tracking-wider">FWD 富衛</span>
+              <span id="ref-plan-code" class="text-xs font-semibold text-[#ffbd59]">盈‧一生年金 (UQI1 躉繳)</span>
+            </div>
+            <span id="ref-age-label" class="text-[11px] text-white bg-[#449bb0]/30 border border-[#449bb0]/50 px-2 py-0.5 rounded">下次生日 66 歲</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+              <span id="ref-annual-rate-title" class="text-slate-300 block mb-0.5">年保證年金率（未計折扣）</span>
+              <span id="ref-annual-rate-val" class="text-base font-bold text-[#ffbd59]">5.52% / 年</span>
+              <span id="ref-effective-rate-sub" class="text-[11px] text-[#449bb0] font-semibold hidden mt-0.5">折實淨年派率：5.52%</span>
+              <span id="ref-payout-start" class="text-[11px] text-slate-300 block mt-0.5">第1個保單月結日起派發</span>
+            </div>
+            <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+              <span class="text-slate-300 block mb-0.5">官方建議書基準 (約13萬美元)</span>
+              <span id="ref-si-sample" class="text-sm font-bold text-white">US$130,217 → 月派 US$599</span>
+              <span class="text-[11px] text-[#449bb0] font-medium block mt-0.5">✓ 內置智護同行 & 入息延續</span>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-300 mt-3 leading-relaxed">
+            * 數據直接取自 FWD《盈‧一生年金保險計劃》官方建議書（非吸煙優惠保費）；80歲或第10週年（較後者）另派 HK$10,000 長壽獎賞。
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Diagnostic Results & Solution Architecture (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- 1. Eligibility Status Banner Card -->
+        <div id="status-card" class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden transition-all">
+          <div id="status-header" class="px-6 py-5 bg-[#ffbd59]/20 border-b border-[#ffbd59]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-start sm:items-center space-x-3.5">
+              <div id="status-icon-box" class="w-11 h-11 rounded-xl bg-[#ffbd59] text-[#1b2a41] flex items-center justify-center shrink-0 shadow-sm">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              </div>
+              <div>
+                <div class="flex items-center space-x-2">
+                  <span id="status-tag" class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-[#ffbd59]/40 text-[#1b2a41]">資產超出限額</span>
+                  <span class="text-xs text-slate-600">初步評估結果</span>
+                </div>
+                <h3 id="status-title" class="text-lg sm:text-xl font-bold text-[#1b2a41] mt-1">
+                  現時資產超出社署上限 HK$1,015,000，暫未符合申請資格
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Two-Pillar Assessment Progress Bars (Assets & Income) -->
+          <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Asset Gauge -->
+            <div class="bg-[#ebebeb]/50 rounded-xl p-4 border border-slate-200/80">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-bold text-slate-600">資產審查評估</span>
+                <span id="asset-pass-badge" class="text-xs font-bold text-rose-600">超額 HK$1,015,000</span>
+              </div>
+              <div class="flex items-baseline justify-between mb-2">
+                <span id="display-current-asset" class="text-lg font-extrabold text-[#1b2a41]">HK$1,430,000</span>
+                <span id="display-limit-asset" class="text-xs text-slate-500">上限 HK$415,000</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                <div id="bar-asset" class="h-full bg-rose-500 rounded-full transition-all duration-300" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Income Gauge -->
+            <div class="bg-[#ebebeb]/50 rounded-xl p-4 border border-slate-200/80">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-bold text-slate-600">每月入息審查評估</span>
+                <span id="income-pass-badge" class="text-xs font-bold text-[#449bb0]">符合（尚餘額度 HK$7,400）</span>
+              </div>
+              <div class="flex justify-between items-baseline mb-2">
+                <span id="display-current-income" class="text-lg font-extrabold text-[#1b2a41]">HK$3,500</span>
+                <span id="display-limit-income" class="text-xs text-slate-500">上限 HK$10,900</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                <div id="bar-income" class="h-full bg-[#449bb0] rounded-full transition-all duration-300" style="width: 32%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. FWD "盈一生" Annuity Strategic Solution Card -->
+        <div id="solution-card" class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#ebebeb]">
+            <div class="flex items-center space-x-2.5">
+              <span class="w-7 h-7 rounded-lg bg-[#449bb0] text-white flex items-center justify-center font-bold text-xs">02</span>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-[#1b2a41]">FWD「盈一生」年金配置建議方案</h2>
+                <p class="text-xs text-slate-500">將超額流動資產轉化為終身保證年金，合法合規符合長生津審查</p>
+              </div>
+            </div>
+            <span id="solution-feasibility-pill" class="self-start sm:self-center text-xs font-bold px-3 py-1 rounded-full bg-[#449bb0]/15 text-[#1b2a41] border border-[#449bb0]/40">
+              ✓ 方案完全可行
+            </span>
+          </div>
+
+          <!-- Key Recommended Metrics Grid -->
+          <div id="solution-metrics-grid" class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- Metric 1: Recommended Premium -->
+            <div class="rounded-2xl bg-[#1b2a41] text-white p-4 border border-[#449bb0]/50 relative overflow-hidden">
+              <span id="rec-prem-title" class="text-[11px] uppercase tracking-wider text-[#ffbd59] font-semibold block">建議投保「盈一生」實付保費</span>
+              <div class="mt-2">
+                <span id="rec-prem-hkd" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">HK$1,015,000</span>
+                <span id="rec-prem-usd" class="text-xs text-[#ffbd59] font-medium block mt-0.5">約 US$130,128 (躉繳)</span>
+                <span id="rec-nominal-sub" class="text-[11px] text-[#449bb0] font-semibold hidden mt-0.5">名義保費：HK$1,015,000</span>
+              </div>
+              <div class="mt-3 pt-2.5 border-t border-white/10 flex justify-between text-[11px] text-slate-300">
+                <span>配置後剩餘資產</span>
+                <span id="post-asset-hkd" class="font-semibold text-white">HK$415,000</span>
+              </div>
+            </div>
+
+            <!-- Metric 2: Monthly Annuity Payout -->
+            <div class="rounded-2xl bg-[#ebebeb]/60 p-4 border border-slate-200/90 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-semibold text-slate-600 block">「盈一生」每月保證年金</span>
+                <span id="rec-annuity-hkd" class="text-xl sm:text-2xl font-extrabold text-[#449bb0] mt-2 block">+ HK$4,672 / 月</span>
+                <span id="rec-annuity-usd" class="text-xs text-slate-500 block mt-0.5">約 US$599 / 月 (終身派發)</span>
+              </div>
+              <div class="mt-3 pt-2.5 border-t border-slate-200/80 flex justify-between text-[11px]">
+                <span class="text-slate-500">領取期總入息</span>
+                <span id="post-income-hkd" class="font-bold text-[#1b2a41]">HK$8,172 / 月</span>
+              </div>
+            </div>
+
+            <!-- Metric 3: Total Monthly Passive Income (Annuity + OALA) -->
+            <div class="rounded-2xl bg-[#ffbd59]/20 p-4 border border-[#ffbd59]/60 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-semibold text-[#1b2a41] block">領取期每月總被動現金流</span>
+                <span id="total-cashflow-hkd" class="text-xl sm:text-2xl font-extrabold text-[#1b2a41] mt-2 block">HK$12,517 / 月</span>
+                <span id="oala-gain-desc" class="text-xs text-slate-700 font-medium block mt-0.5">含長生津 HK$4,345 + 年金 + 原入息</span>
+              </div>
+              <div class="mt-3 pt-2.5 border-t border-[#ffbd59]/50 flex justify-between text-[11px]">
+                <span class="text-[#1b2a41]">每年新增保證收入</span>
+                <span id="annual-gain-hkd" class="font-bold text-[#449bb0]">+ HK$108,204 / 年</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Fine-Tune Slider for Annuity Premium -->
+          <div id="interactive-tuner" class="mt-6 p-4 rounded-xl bg-[#ebebeb]/50 border border-slate-200/90">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-xs font-bold text-[#1b2a41]">顧問微調模擬：自訂「盈一生」實付保費</span>
+                <span id="sweet-spot-tag" class="text-[11px] px-2.5 py-0.5 rounded bg-[#1b2a41] text-[#ffbd59] font-medium">
+                  合資格黃金區間：HK$1,015,000 – HK$1,606,500
+                </span>
+              </div>
+              <span id="custom-prem-label" class="text-xs font-bold text-[#449bb0]">US$130,128 (HK$1,015,000)</span>
+            </div>
+            <input type="range" id="slider-custom-prem" min="0" max="10000000" step="10000" value="1015000" oninput="onCustomPremChange(this.value)" class="w-full" />
+            <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+              <span>HK$0 (不投保)</span>
+              <span id="min-req-marker" class="text-[#1b2a41] font-medium">最低資產達標線</span>
+              <span id="max-cap-marker" class="text-[#1b2a41] font-medium">最高入息上限線</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Advisory Alert / Explanation Box -->
+          <div id="advisory-note-box" class="mt-5 p-4 rounded-xl bg-[#449bb0]/10 border border-[#449bb0]/35 text-xs sm:text-sm text-[#1b2a41] leading-relaxed">
+          </div>
+        </div>
+
+        <!-- 3. Before vs After Comparison Table & Shareable Summary -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm sm:text-base font-bold text-[#1b2a41]">規劃前後財務與資格對比表</h3>
+            <button onclick="copySummaryToClipboard()" id="copy-btn"
+              class="text-xs font-semibold px-3.5 py-2 rounded-xl bg-[#449bb0] hover:bg-[#388699] text-white shadow-sm transition flex items-center space-x-1.5">
+              <svg class="w-4 h-4 text-[#ffbd59]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 0 012-2h2a2 0 012 2m0 0h2a2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              <span>複製 WhatsApp 客戶簡報</span>
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-500">
+                  <th class="py-2.5 font-semibold">評估項目</th>
+                  <th class="py-2.5 font-semibold text-right">規劃前（現況）</th>
+                  <th class="py-2.5 font-semibold text-right text-[#1b2a41]">規劃後（配置盈一生）</th>
+                  <th class="py-2.5 font-semibold text-right">社署規定上限</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb]">
+                <tr>
+                  <td class="py-3 font-medium text-slate-700">FWD 盈一生實付保費（豁免資產）</td>
+                  <td class="py-3 text-right text-slate-400">HK$0</td>
+                  <td id="tbl-annuity-prem" class="py-3 text-right font-bold text-[#1b2a41]">HK$1,015,000</td>
+                  <td id="tbl-discount-note" class="py-3 text-right text-[#449bb0] text-xs font-semibold">全數豁免計算</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-slate-700">FWD 盈一生保費（豁免資產）</td>
+                  <td class="py-3 text-right text-slate-400">HK$0</td>
+                  <td id="tbl-annuity-prem" class="py-3 text-right font-bold text-[#1b2a41]">HK$1,015,000</td>
+                  <td class="py-3 text-right text-[#449bb0] text-xs font-semibold">全數豁免計算</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-slate-700">年金派發期每月須審查入息</td>
+                  <td id="tbl-pre-income" class="py-3 text-right font-semibold text-slate-700">HK$3,500</td>
+                  <td id="tbl-post-income" class="py-3 text-right font-bold text-[#1b2a41]">HK$8,172</td>
+                  <td id="tbl-lim-income" class="py-3 text-right text-slate-500">HK$10,900</td>
+                </tr>
+                <tr class="bg-[#ffbd59]/15">
+                  <td class="py-3 font-bold text-[#1b2a41]">政府長者生活津貼（65歲起每月）</td>
+                  <td id="tbl-pre-oala" class="py-3 text-right font-semibold text-slate-400">HK$0（不符資格）</td>
+                  <td id="tbl-post-oala" class="py-3 text-right font-extrabold text-[#1b2a41]">+ HK$4,345 / 月</td>
+                  <td class="py-3 text-right text-slate-600 text-xs">終身合資格領取</td>
+                </tr>
+                <tr class="bg-[#1b2a41] text-white">
+                  <td class="py-3.5 px-3 rounded-l-xl font-bold">年金派發期每月總現金流</td>
+                  <td id="tbl-pre-total" class="py-3.5 text-right font-semibold text-slate-300">HK$3,500</td>
+                  <td id="tbl-post-total" class="py-3.5 text-right font-extrabold text-[#ffbd59] text-base">HK$12,517</td>
+                  <td id="tbl-diff-total" class="py-3.5 px-3 rounded-r-xl text-right font-bold text-[#449bb0]">+HK$9,017 / 月</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-[#1b2a41] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#449bb0]/60 flex items-center space-x-3">
+      <span class="w-6 h-6 rounded-full bg-[#ffbd59] text-[#1b2a41] flex items-center justify-center font-bold text-xs">✓</span>
+      <span id="toast-msg" class="text-sm font-medium">已複製客戶規劃摘要至剪貼簿！</span>
+    </div>
+  </div>
+
+  <!-- SWD Rule & Full Age Actuarial Table Modal -->
+  <div id="rule-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 max-h-[88vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-[#ebebeb]">
+        <h3 class="text-lg font-bold text-[#1b2a41]">社署長生津規則 & FWD 盈一生全年齡精算對照表</h3>
+        <button onclick="closeRuleModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-[#1b2a41] hover:bg-[#ebebeb]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="mt-4 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-[#ebebeb]/60 border border-slate-200/80">
+          <h4 class="font-bold text-[#1b2a41] mb-1">1. 2026年2月1日起生效之社署長生津限額</h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>津貼金額</strong>：每位合資格65歲或以上長者每月 <strong>HK$4,345</strong>。</li>
+            <li><strong>單身人士限額</strong>：資產上限 <strong>HK$415,000</strong> ｜ 每月入息上限 <strong>HK$10,900</strong>。</li>
+            <li><strong>夫婦合併限額</strong>：資產上限 <strong>HK$630,000</strong> ｜ 每月入息上限 <strong>HK$16,680</strong>。</li>
+            <li><strong>年金豁免原則</strong>：投保年金的<strong>保費總額 100% 豁免計入資產</strong>；派發期之<strong>每月保證年金</strong>計入每月入息。</li>
+          </ul>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-[#449bb0]/10 border border-[#449bb0]/35">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <h4 id="modal-table-title" class="font-bold text-[#1b2a41]">2. FWD《盈‧一生年金保險計劃》官方保證年金率（未計折扣）</h4>
+            <span id="modal-discount-badge" class="text-[11px] font-bold px-2.5 py-0.5 rounded bg-[#ffbd59]/30 text-[#1b2a41]">目前折扣設定：0%</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-center border-collapse text-xs bg-white rounded-lg overflow-hidden">
+              <thead class="bg-[#1b2a41] text-white">
+                <tr>
+                  <th class="py-2 px-1.5">下次生日年齡</th>
+                  <th class="py-2 px-1.5">男/女 (躉繳 UQI1)</th>
+                  <th class="py-2 px-1.5">男/女 (2年繳 UQI2)</th>
+                  <th class="py-2 px-1.5">男/女 (5年繳 UQI5)</th>
+                </tr>
+              </thead>
+              <tbody id="modal-rate-tbody" class="divide-y divide-[#ebebeb]">
+                <tr><td class="py-1.5 font-semibold">41歲 (40歲投保)</td><td>4.14% / 4.00%</td><td>4.12% / 3.95%</td><td>4.10% / 3.91%</td></tr>
+                <tr><td class="py-1.5 font-semibold">51歲 (50歲投保)</td><td>4.65% / 4.47%</td><td>4.61% / 4.44%</td><td>4.56% / 4.40%</td></tr>
+                <tr class="bg-[#449bb0]/15 font-semibold text-[#1b2a41]"><td class="py-1.5">61歲 (60歲投保)</td><td>5.20% / 4.99%</td><td>5.15% / 4.92%</td><td>5.09% / 4.85%</td></tr>
+                <tr class="bg-[#449bb0]/15 font-semibold text-[#1b2a41]"><td class="py-1.5">64歲 (63歲投保)</td><td>5.39% / 5.17%</td><td>5.35% / 5.10%</td><td>5.22% / 4.98%</td></tr>
+                <tr class="bg-[#ffbd59]/25 font-bold text-[#1b2a41]"><td class="py-1.5">66歲 (65歲投保)</td><td>5.52% / 5.29%</td><td>5.46% / 5.22%</td><td>5.31% / 5.07%</td></tr>
+                <tr><td class="py-1.5 font-semibold">71歲 (70歲投保)</td><td>5.88% / 5.60%</td><td>5.83% / 5.54%</td><td>5.79% / 5.48%</td></tr>
+                <tr><td class="py-1.5 font-semibold">76歲 (75歲投保)</td><td>6.52% / 6.18%</td><td>6.48% / 6.12%</td><td>6.37% / 6.04%</td></tr>
+                <tr><td class="py-1.5 font-semibold">81歲 (80歲投保)</td><td>6.94% / 6.48%</td><td>6.89% / 6.42%</td><td>6.77% / 6.36%</td></tr>
+                <tr><td class="py-1.5 font-semibold">86歲 (85歲投保)</td><td>7.36% / 6.81%</td><td>7.31% / 6.76%</td><td>不適用</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[11px] text-[#1b2a41] mt-2">
+            * 數據提取自 ZC Product > Annuity > Foreverwell 官方建議書（VIP MALE / VIP FEMALE 約 US$130,000 建議書實測比率）。若享有保費折扣（例如 5%），實付保費為名義保費的 95%，而保證年金仍按 100% 名義保費派發，令折實淨年派率進一步提升。
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-[#ebebeb]/60 border border-slate-200/80">
+          <h4 class="font-bold text-[#1b2a41] mb-1">3. 產品核心優勢（FWD 培訓講義 2026年11月版）</h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>身故保證回本 & 入息延續選項</strong>：76歲前投保可選「入息延續選項」，第2個保單週年日後身故，最高保證派發至繳付保費總額的 <strong>115%（躉繳/2年繳）</strong> 或 <strong>105%（5年繳）</strong> 予受益人。</li>
+            <li><strong>智護同行保障權益</strong>：1年等候期後，86歲前確診亞爾茲默氏病或柏金遜症，終身每月額外支付 <strong>10% 保證年金</strong>。</li>
+            <li><strong>紅利鎖定選項</strong>：第2個保單週年日起，如確診12種指定疾病，可每年鎖定 10%–50% 特別紅利作應急資金，無須部分退保。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-5 text-right">
+        <button onclick="closeRuleModal()" class="px-5 py-2.5 rounded-xl bg-[#1b2a41] text-white text-xs sm:text-sm font-semibold hover:bg-[#449bb0] transition">明白，返回計算器</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. CONSTANTS & EXACT ACTUARIAL DATA FROM DRIVE SALES ILLUSTRATIONS
+    // =========================================================================
+    const OALA_RULES = {
+      monthlyAllowance: 4345, // HK$4,345 per eligible senior (effective Feb 1, 2026)
+      single: {
+        assetLimit: 415000,
+        incomeLimit: 10900,
+        label: '單身人士'
+      },
+      couple: {
+        assetLimit: 630000,
+        incomeLimit: 16680,
+        label: '夫婦合併'
+      }
+    };
+
+    // Exact data extracted from FWD "盈一生" Sales Illustrations (USD ~130K, Non-Smoker)
+    // Key = ANB (Age Next Birthday: 41..86)
+    const FWD_PROPOSAL_DATA = {
+      1: { // Single Pay (UQI1) - Payout starts Month 1
+        male: {
+          41: { premUSD: 130145, monthlyUSD: 449 }, // 4.14%
+          46: { premUSD: 130045, monthlyUSD: 479 }, // 4.42%
+          51: { premUSD: 130064, monthlyUSD: 504 }, // 4.65%
+          56: { premUSD: 130081, monthlyUSD: 529 }, // 4.88%
+          61: { premUSD: 130154, monthlyUSD: 564 }, // 5.20%
+          62: { premUSD: 130166, monthlyUSD: 571 }, // 5.26%
+          63: { premUSD: 130179, monthlyUSD: 578 }, // 5.33%
+          64: { premUSD: 130192, monthlyUSD: 585 }, // 5.39%
+          65: { premUSD: 130204, monthlyUSD: 592 }, // 5.46%
+          66: { premUSD: 130217, monthlyUSD: 599 }, // 5.52%
+          71: { premUSD: 130204, monthlyUSD: 638 }, // 5.88%
+          76: { premUSD: 130122, monthlyUSD: 707 }, // 6.52%
+          81: { premUSD: 130028, monthlyUSD: 752 }, // 6.94%
+          86: { premUSD: 130109, monthlyUSD: 798 }  // 7.36%
+        },
+        female: {
+          41: { premUSD: 130200, monthlyUSD: 434 }, // 4.00%
+          46: { premUSD: 130140, monthlyUSD: 462 }, // 4.26%
+          51: { premUSD: 130201, monthlyUSD: 485 }, // 4.47%
+          56: { premUSD: 130234, monthlyUSD: 509 }, // 4.69%
+          61: { premUSD: 130100, monthlyUSD: 541 }, // 4.99%
+          62: { premUSD: 130122, monthlyUSD: 548 }, // 5.05%
+          63: { premUSD: 130143, monthlyUSD: 554 }, // 5.11%
+          64: { premUSD: 130165, monthlyUSD: 561 }, // 5.17%
+          65: { premUSD: 130186, monthlyUSD: 567 }, // 5.23%
+          66: { premUSD: 130208, monthlyUSD: 574 }, // 5.29%
+          71: { premUSD: 130071, monthlyUSD: 607 }, // 5.60%
+          76: { premUSD: 130100, monthlyUSD: 670 }, // 6.18%
+          81: { premUSD: 130000, monthlyUSD: 702 }, // 6.48%
+          86: { premUSD: 130044, monthlyUSD: 738 }  // 6.81%
+        }
+      },
+      2: { // 2-Pay (UQI2) - Payout starts Month 25 (e.g. Age 63 -> Payout at Age 65!)
+        male: {
+          41: { premUSD: 130145, monthlyUSD: 447 }, // 4.12%
+          46: { premUSD: 130120, monthlyUSD: 474 }, // 4.37%
+          51: { premUSD: 130110, monthlyUSD: 500 }, // 4.61%
+          56: { premUSD: 130110, monthlyUSD: 525 }, // 4.84%
+          61: { premUSD: 130110, monthlyUSD: 558 }, // 5.15%
+          62: { premUSD: 130110, monthlyUSD: 565 }, // 5.21%
+          63: { premUSD: 130110, monthlyUSD: 572 }, // 5.28%
+          64: { premUSD: 130110, monthlyUSD: 580 }, // 5.35%
+          65: { premUSD: 130110, monthlyUSD: 586 }, // 5.40%
+          66: { premUSD: 130109, monthlyUSD: 592 }, // 5.46% (Exact from UQI2 SI: 7,104/yr)
+          71: { premUSD: 130110, monthlyUSD: 632 }, // 5.83%
+          76: { premUSD: 130110, monthlyUSD: 702 }, // 6.48%
+          81: { premUSD: 130110, monthlyUSD: 747 }, // 6.89%
+          86: { premUSD: 130110, monthlyUSD: 792 }  // 7.31%
+        },
+        female: {
+          41: { premUSD: 130114, monthlyUSD: 428 }, // 3.95%
+          46: { premUSD: 130114, monthlyUSD: 457 }, // 4.21%
+          51: { premUSD: 130114, monthlyUSD: 481 }, // 4.44%
+          56: { premUSD: 130114, monthlyUSD: 505 }, // 4.66%
+          61: { premUSD: 130114, monthlyUSD: 534 }, // 4.92%
+          62: { premUSD: 130114, monthlyUSD: 540 }, // 4.98%
+          63: { premUSD: 130114, monthlyUSD: 547 }, // 5.04%
+          64: { premUSD: 130114, monthlyUSD: 553 }, // 5.10%
+          65: { premUSD: 130114, monthlyUSD: 560 }, // 5.16%
+          66: { premUSD: 130114, monthlyUSD: 566 }, // 5.22% (Exact from UQI2 SI: 6,792/yr)
+          71: { premUSD: 130114, monthlyUSD: 601 }, // 5.54%
+          76: { premUSD: 130114, monthlyUSD: 664 }, // 6.12%
+          81: { premUSD: 130114, monthlyUSD: 696 }, // 6.42%
+          86: { premUSD: 130114, monthlyUSD: 733 }  // 6.76%
+        }
+      },
+      5: { // 5-Pay (UQI5) - Payout starts Month 61 (Max ANB 81)
+        male: {
+          41: { premUSD: 130145, monthlyUSD: 445 }, // 4.10%
+          46: { premUSD: 130230, monthlyUSD: 471 }, // 4.34%
+          51: { premUSD: 130150, monthlyUSD: 495 }, // 4.56%
+          56: { premUSD: 130208, monthlyUSD: 523 }, // 4.82%
+          61: { premUSD: 130150, monthlyUSD: 552 }, // 5.09%
+          62: { premUSD: 130154, monthlyUSD: 557 }, // 5.14%
+          63: { premUSD: 130158, monthlyUSD: 562 }, // 5.18%
+          64: { premUSD: 130162, monthlyUSD: 566 }, // 5.22%
+          65: { premUSD: 130166, monthlyUSD: 571 }, // 5.26%
+          66: { premUSD: 130170, monthlyUSD: 576 }, // 5.31%
+          71: { premUSD: 130154, monthlyUSD: 628 }, // 5.79%
+          76: { premUSD: 130150, monthlyUSD: 691 }, // 6.37%
+          81: { premUSD: 130150, monthlyUSD: 734 }  // 6.77%
+        },
+        female: {
+          41: { premUSD: 130128, monthlyUSD: 424 }, // 3.91%
+          46: { premUSD: 130048, monthlyUSD: 453 }, // 4.18%
+          51: { premUSD: 130092, monthlyUSD: 477 }, // 4.40%
+          56: { premUSD: 130109, monthlyUSD: 502 }, // 4.63%
+          61: { premUSD: 130143, monthlyUSD: 526 }, // 4.85%
+          62: { premUSD: 130150, monthlyUSD: 531 }, // 4.90%
+          63: { premUSD: 130157, monthlyUSD: 536 }, // 4.94%
+          64: { premUSD: 130164, monthlyUSD: 540 }, // 4.98%
+          65: { premUSD: 130171, monthlyUSD: 545 }, // 5.02%
+          66: { premUSD: 130178, monthlyUSD: 550 }, // 5.07%
+          71: { premUSD: 130071, monthlyUSD: 594 }, // 5.48%
+          76: { premUSD: 130134, monthlyUSD: 655 }, // 6.04%
+          81: { premUSD: 130134, monthlyUSD: 690 }  // 6.36%
+        }
+      }
+    };
+
+    // Application State
+    let state = {
+      status: 'single',       // 'single' | 'couple'
+      gender: 'male',         // 'male' | 'female'
+      anbAge: 66,             // 41..86
+      payTerm: 1,             // 1 | 2 | 5
+      eligibleCount: 2,       // 1 | 2 (for couple)
+      assets: 1430000,
+      income: 3500,
+      discountPct: 0,         // 0..30 (%)
+      fxRate: 7.80,
+      customPremHKD: null,
+      lastSummaryText: ''
+    };
+
+    function fmtHKD(val) {
+      return 'HK$' + Math.round(val).toLocaleString('en-US');
+    }
+    function fmtUSD(val) {
+      return 'US$' + Math.round(val).toLocaleString('en-US');
+    }
+
+    // =========================================================================
+    // 2. UI STATE & PRESET HANDLERS
+    // =========================================================================
+    function setStatus(status) {
+      state.status = status;
+      state.customPremHKD = null;
+
+      const btnSingle = document.getElementById('btn-single');
+      const btnCouple = document.getElementById('btn-couple');
+      const coupleBox = document.getElementById('couple-eligible-box');
+
+      if (status === 'single') {
+        btnSingle.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition bg-[#1b2a41] text-white shadow-sm';
+        btnCouple.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:text-[#1b2a41]';
+        coupleBox.classList.add('hidden');
+      } else {
+        btnCouple.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition bg-[#1b2a41] text-white shadow-sm';
+        btnSingle.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:text-[#1b2a41]';
+        coupleBox.classList.remove('hidden');
+      }
+      calculate();
+    }
+
+    function setGender(gender) {
+      state.gender = gender;
+      state.customPremHKD = null;
+
+      const btnMale = document.getElementById('btn-male');
+      const btnFemale = document.getElementById('btn-female');
+
+      if (gender === 'male') {
+        btnMale.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition bg-[#1b2a41] text-white shadow-sm';
+        btnFemale.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:text-[#1b2a41]';
+      } else {
+        btnFemale.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition bg-[#1b2a41] text-white shadow-sm';
+        btnMale.className = 'py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:text-[#1b2a41]';
+      }
+      calculate();
+    }
+
+    function setPayTerm(term) {
+      const ageSelect = document.getElementById('select-age');
+      const currentAge = parseInt(ageSelect.value, 10);
+
+      // 5-Pay max ANB is 81 per FWD product rules
+      if (term === 5 && currentAge === 86) {
+        ageSelect.value = '81';
+        state.anbAge = 81;
+        showToast('5年繳最高投保年齡為80歲（ANB 81歲），已自動為您調整年齡');
+      }
+
+      state.payTerm = term;
+      state.customPremHKD = null;
+
+      const activeClass = 'py-2 px-1.5 rounded-lg text-xs font-semibold transition bg-[#1b2a41] text-white shadow-sm';
+      const inactiveClass = 'py-2 px-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-[#1b2a41]';
+
+      document.getElementById('btn-term-1').className = term === 1 ? activeClass : inactiveClass;
+      document.getElementById('btn-term-2').className = term === 2 ? activeClass : inactiveClass;
+      document.getElementById('btn-term-5').className = term === 5 ? activeClass : inactiveClass;
+
+      calculate();
+    }
+
+    function onAgeOrTermChange() {
+      const ageSelect = document.getElementById('select-age');
+      const selectedAge = parseInt(ageSelect.value, 10);
+      if (selectedAge === 86 && state.payTerm === 5) {
+        setPayTerm(1);
+        showToast('85歲（ANB 86歲）僅設躉繳（UQI1），已自動切換為躉繳');
+        return;
+      }
+      state.anbAge = selectedAge;
+      state.customPremHKD = null;
+      calculate();
+    }
+
+    function setEligibleCount(count) {
+      state.eligibleCount = count;
+      const b1 = document.getElementById('btn-elig-1');
+      const b2 = document.getElementById('btn-elig-2');
+      if (count === 1) {
+        b1.className = 'px-2.5 py-1 rounded-md text-xs font-semibold bg-[#1b2a41] text-white';
+        b2.className = 'px-2.5 py-1 rounded-md text-xs font-semibold text-slate-600';
+      } else {
+        b2.className = 'px-2.5 py-1 rounded-md text-xs font-semibold bg-[#1b2a41] text-white';
+        b1.className = 'px-2.5 py-1 rounded-md text-xs font-semibold text-slate-600';
+      }
+      calculate();
+    }
+
+    function syncAssetFromSlider(val) {
+      document.getElementById('input-assets').value = val;
+      state.customPremHKD = null;
+      calculate();
+    }
+
+    function syncIncomeFromSlider(val) {
+      document.getElementById('input-income').value = val;
+      state.customPremHKD = null;
+      calculate();
+    }
+
+    function onCustomPremChange(val) {
+      state.customPremHKD = parseFloat(val) || 0;
+      calculate(false, true);
+    }
+
+    function setDiscount(pct) {
+      document.getElementById('input-discount').value = pct;
+      state.discountPct = pct;
+      state.customPremHKD = null;
+      updateDiscountButtons(pct);
+      calculate();
+    }
+
+    function onDiscountInput() {
+      const val = Math.min(30, Math.max(0, parseFloat(document.getElementById('input-discount').value) || 0));
+      state.discountPct = val;
+      state.customPremHKD = null;
+      updateDiscountButtons(val);
+      calculate();
+    }
+
+    function updateDiscountButtons(activePct) {
+      document.querySelectorAll('.disc-btn').forEach(btn => {
+        const btnVal = parseFloat(btn.getAttribute('data-disc'));
+        if (btnVal === activePct) {
+          btn.className = 'disc-btn py-1 rounded-md text-[11px] font-semibold bg-[#1b2a41] text-white transition';
+        } else {
+          btn.className = 'disc-btn py-1 rounded-md text-[11px] font-semibold bg-white text-slate-700 hover:bg-[#1b2a41]/10 border border-slate-200 transition';
+        }
+      });
+    }
+
+    function applyPreset(type) {
+      state.customPremHKD = null;
+      if (type === 'singleOver') {
+        setStatus('single');
+        setGender('male');
+        document.getElementById('select-age').value = '66';
+        state.anbAge = 66;
+        setPayTerm(1);
+        document.getElementById('input-assets').value = 1430000;
+        document.getElementById('slider-assets').value = 1430000;
+        document.getElementById('input-income').value = 3500;
+        document.getElementById('slider-income').value = 3500;
+      } else if (type === 'coupleOver') {
+        setStatus('couple');
+        setGender('female');
+        document.getElementById('select-age').value = '71';
+        state.anbAge = 71;
+        setPayTerm(1);
+        setEligibleCount(2);
+        document.getElementById('input-assets').value = 1650000;
+        document.getElementById('slider-assets').value = 1650000;
+        document.getElementById('input-income').value = 6000;
+        document.getElementById('slider-income').value = 6000;
+      } else if (type === 'preRetire63') {
+        setStatus('single');
+        setGender('male');
+        document.getElementById('select-age').value = '64'; // Age 63 (ANB 64)
+        state.anbAge = 64;
+        setPayTerm(2); // 2-Pay: finishes at age 65, payout starts Month 25!
+        document.getElementById('input-assets').value = 1430000;
+        document.getElementById('slider-assets').value = 1430000;
+        document.getElementById('input-income').value = 2500;
+        document.getElementById('slider-income').value = 2500;
+      } else if (type === 'preRetire60') {
+        setStatus('single');
+        setGender('male');
+        document.getElementById('select-age').value = '61'; // Age 60 (ANB 61)
+        state.anbAge = 61;
+        setPayTerm(5); // 5-Pay: finishes at age 65, payout starts Month 61!
+        document.getElementById('input-assets').value = 1430000;
+        document.getElementById('slider-assets').value = 1430000;
+        document.getElementById('input-income').value = 2500;
+        document.getElementById('slider-income').value = 2500;
+      }
+      calculate(true);
+    }
+
+    function resetForm() {
+      applyPreset('singleOver');
+    }
+
+    // =========================================================================
+    // 3. CORE CALCULATION ENGINE
+    // =========================================================================
+    function calculate(showToastFeedback = false, isCustomSlider = false) {
+      const assets = Math.max(0, parseFloat(document.getElementById('input-assets').value) || 0);
+      const income = Math.max(0, parseFloat(document.getElementById('input-income').value) || 0);
+      const fx = Math.max(1, parseFloat(document.getElementById('input-fx').value) || 7.80);
+      const discountPct = Math.min(30, Math.max(0, parseFloat(document.getElementById('input-discount').value) || 0));
+      const discountFactor = 1 - (discountPct / 100);
+
+      state.assets = assets;
+      state.income = income;
+      state.fxRate = fx;
+      state.discountPct = discountPct;
+
+      document.getElementById('slider-assets').value = Math.min(10000000, assets);
+      document.getElementById('slider-income').value = Math.min(100000, income);
+
+      const rule = OALA_RULES[state.status];
+      const termData = FWD_PROPOSAL_DATA[state.payTerm][state.gender];
+      const sample = termData[state.anbAge] || termData[66];
+
+      // Base monthly yield on 100% nominal premium, and effective yield on actual discounted out-of-pocket premium
+      const baseMonthlyYield = sample.monthlyUSD / sample.premUSD;
+      const effectiveMonthlyYield = baseMonthlyYield / discountFactor;
+      const baseAnnualRatePct = ((sample.monthlyUSD * 12) / sample.premUSD * 100).toFixed(2);
+      const effectiveAnnualRatePct = (((sample.monthlyUSD * 12) / (sample.premUSD * discountFactor)) * 100).toFixed(2);
+
+      // Update FWD Actuarial Card
+      const planCode = state.payTerm === 1 ? 'UQI1 躉繳' : (state.payTerm === 2 ? 'UQI2 2年繳' : 'UQI5 5年繳');
+      const genderLabel = state.gender === 'male' ? '男性' : '女性';
+      const actualAge = state.anbAge - 1;
+      const payoutAge = actualAge + (state.payTerm === 1 ? 0 : state.payTerm);
+
+      document.getElementById('ref-plan-code').textContent = `盈‧一生年金 (${planCode})`;
+      document.getElementById('ref-age-label').textContent = `${genderLabel}｜投保 ${actualAge}歲 (ANB ${state.anbAge}歲)`;
+
+      const effRateSub = document.getElementById('ref-effective-rate-sub');
+      if (discountPct > 0) {
+        document.getElementById('ref-annual-rate-title').textContent = `折實淨年派率 (原 ${baseAnnualRatePct}%)`;
+        document.getElementById('ref-annual-rate-val').textContent = `${effectiveAnnualRatePct}% / 年`;
+        effRateSub.textContent = `✓ 已計 ${discountPct}% 保費折扣優惠`;
+        effRateSub.classList.remove('hidden');
+        effRateSub.classList.add('block');
+      } else {
+        document.getElementById('ref-annual-rate-title').textContent = '年保證年金率（未計折扣）';
+        document.getElementById('ref-annual-rate-val').textContent = `${baseAnnualRatePct}% / 年`;
+        effRateSub.classList.add('hidden');
+        effRateSub.classList.remove('block');
+      }
+
+      document.getElementById('ref-payout-start').textContent = state.payTerm === 1
+        ? '第1個保單月結日起終身派發'
+        : (state.payTerm === 2
+          ? `第25個保單月結日（滿${payoutAge}歲）起派發`
+          : `第61個保單月結日（滿${payoutAge}歲）起派發`);
+      document.getElementById('ref-si-sample').textContent = `${fmtUSD(sample.premUSD)} → 月派 ${fmtUSD(sample.monthlyUSD)}`;
+
+      // Show Age / Multi-Pay contextual alert if needed
+      const ageTermAlert = document.getElementById('age-term-alert');
+      if (actualAge < 65 || state.payTerm > 1) {
+        ageTermAlert.classList.remove('hidden');
+        let msgs = [];
+        if (actualAge === 63 && state.payTerm === 2) {
+          msgs.push(`🎯 <strong>63歲兩年黃金銜接部署</strong>：63歲投保 2年繳（UQI2），分2年繳清保費後剛好 <strong>65歲（第25個保單月結日）</strong> 開始每月領取保證年金，同月無縫銜接申請65歲長者生活津貼！`);
+        } else if (actualAge === 60 && state.payTerm === 5) {
+          msgs.push(`🎯 <strong>60歲五年黃金銜接部署</strong>：60歲投保 5年繳（UQI5），分5年穩健供款，供滿5年剛好 <strong>65歲（第61個保單月結日）</strong> 開始每月領取保證年金，同月無縫銜接申請65歲長者生活津貼！`);
+        } else if (actualAge < 65) {
+          msgs.push(`• 客戶現年 <strong>${actualAge}歲</strong>，須年滿 <strong>65歲</strong> 方可正式申領長者生活津貼；現在提前鎖定「盈‧一生」保證年金率，65歲時已繳保費全數豁免計入資產。`);
+        }
+        if (state.payTerm === 2 && actualAge !== 63) {
+          msgs.push(`• 選擇 <strong>2年繳 (UQI2)</strong>：分2年繳付總保費（每年 50%），第25個保單月結日（滿${payoutAge}歲）起開始派發終身保證年金。`);
+        } else if (state.payTerm === 5 && actualAge !== 60) {
+          msgs.push(`• 選擇 <strong>5年繳 (UQI5)</strong>：分5年繳付總保費（每年 20%），第61個保單月結日（滿${payoutAge}歲）起開始派發終身保證年金。`);
+        }
+        if (state.payTerm > 1) {
+          msgs.push(`* <strong>社署資產審查提示</strong>：分期繳付保費期間，每年已繳付並轉入保單的保費即時豁免計入資產；尚未繳付的資金在未入帳前仍計入個人存款（建議按年準時供款）。`);
+        }
+        ageTermAlert.innerHTML = msgs.join('<br/>');
+      } else {
+        ageTermAlert.classList.add('hidden');
+      }
+
+      const oalaRecipients = state.status === 'single' ? 1 : state.eligibleCount;
+      const potentialOALA = OALA_RULES.monthlyAllowance * oalaRecipients;
+
+      // Update limit badges
+      document.getElementById('limit-asset-badge').textContent = `限額: ${fmtHKD(rule.assetLimit)}`;
+      document.getElementById('limit-income-badge').textContent = `限額: ${fmtHKD(rule.incomeLimit)} / 月`;
+
+      // Pre-planning gaps
+      const assetExcess = Math.max(0, assets - rule.assetLimit);
+      const incomeExcess = Math.max(0, income - rule.incomeLimit);
+      const remainingIncomeRoom = Math.max(0, rule.incomeLimit - income);
+
+      const isPreAssetPass = assets <= rule.assetLimit;
+      const isPreIncomePass = income <= rule.incomeLimit;
+      const isPreQualified = isPreAssetPass && isPreIncomePass;
+
+      // Actual out-of-pocket premium needed to reduce assets below limit
+      const minRequiredPremHKD = assetExcess > 0 ? assetExcess : 0;
+      // Max actual out-of-pocket premium before monthly annuity (calculated on nominal premium) exceeds income room
+      const maxAllowedPremHKD = remainingIncomeRoom > 0 ? Math.floor(remainingIncomeRoom / effectiveMonthlyYield) : 0;
+
+      let activePremHKD = 0; // Actual discounted out-of-pocket premium paid by client
+      if (isCustomSlider && state.customPremHKD !== null) {
+        activePremHKD = Math.min(assets, state.customPremHKD);
+      } else {
+        activePremHKD = minRequiredPremHKD;
+        state.customPremHKD = activePremHKD;
+      }
+
+      const tunerSlider = document.getElementById('slider-custom-prem');
+      const sliderMax = Math.max(assets, minRequiredPremHKD + 200000, 500000);
+      tunerSlider.max = sliderMax;
+      tunerSlider.value = activePremHKD;
+
+      const activePremUSD = activePremHKD / fx;
+      const nominalPremHKD = activePremHKD / discountFactor;
+      const nominalPremUSD = nominalPremHKD / fx;
+      const discountSavedHKD = nominalPremHKD - activePremHKD;
+
+      const monthlyAnnuityHKD = nominalPremHKD * baseMonthlyYield;
+      const monthlyAnnuityUSD = nominalPremUSD * baseMonthlyYield;
+
+      const postAssets = Math.max(0, assets - activePremHKD);
+      const postIncome = income + monthlyAnnuityHKD;
+
+      const isPostAssetPass = postAssets <= rule.assetLimit;
+      const isPostIncomePass = postIncome <= rule.incomeLimit;
+      const isPostQualified = isPostAssetPass && isPostIncomePass;
+
+      const postOALA = isPostQualified ? potentialOALA : 0;
+      const preOALA = isPreQualified ? potentialOALA : 0;
+
+      const preTotalCashflow = income + preOALA;
+      const postTotalCashflow = postIncome + postOALA;
+      const monthlyNetGain = postTotalCashflow - preTotalCashflow;
+      const annualNetGain = monthlyNetGain * 12;
+
+      // =======================================================================
+      // 4. UPDATE UI ELEMENTS
+      // =======================================================================
+      updateStatusBanner(isPreQualified, isPreAssetPass, isPreIncomePass, assetExcess, incomeExcess, potentialOALA);
+      updateGauges(assets, rule.assetLimit, income, rule.incomeLimit, isPreAssetPass, isPreIncomePass, assetExcess, incomeExcess);
+
+      // Solution Cards
+      document.getElementById('rec-prem-title').textContent = state.payTerm === 1
+        ? (discountPct > 0 ? `建議實付躉繳保費 (享${discountPct}%折扣)` : '建議投保「盈一生」躉繳保費')
+        : (discountPct > 0 ? `建議實付${state.payTerm}年總保費 (享${discountPct}%折扣)` : `建議投保「盈一生」${state.payTerm}年總保費`);
+      document.getElementById('rec-prem-hkd').textContent = fmtHKD(activePremHKD);
+      document.getElementById('rec-prem-usd').textContent = state.payTerm === 1
+        ? `約 ${fmtUSD(activePremUSD)} (一筆過實付)`
+        : `實付總額 ${fmtUSD(activePremUSD)} (每年約 ${fmtUSD(activePremUSD / state.payTerm)})`;
+
+      const recNominalSub = document.getElementById('rec-nominal-sub');
+      if (discountPct > 0 && activePremHKD > 0) {
+        recNominalSub.textContent = `名義總保費 ${fmtHKD(nominalPremHKD)} (慳 ${fmtHKD(discountSavedHKD)})`;
+        recNominalSub.classList.remove('hidden');
+        recNominalSub.classList.add('block');
+      } else {
+        recNominalSub.classList.add('hidden');
+        recNominalSub.classList.remove('block');
+      }
+      document.getElementById('post-asset-hkd').textContent = fmtHKD(postAssets);
+
+      document.getElementById('rec-annuity-hkd').textContent = `+ ${fmtHKD(monthlyAnnuityHKD)} / 月`;
+      document.getElementById('rec-annuity-usd').textContent = discountPct > 0
+        ? `約 ${fmtUSD(monthlyAnnuityUSD)} / 月 (折實 ${effectiveAnnualRatePct}% p.a.)`
+        : `約 ${fmtUSD(monthlyAnnuityUSD)} / 月 (${baseAnnualRatePct}% p.a.)`;
+      document.getElementById('post-income-hkd').textContent = `${fmtHKD(postIncome)} / 月`;
+
+      document.getElementById('total-cashflow-hkd').textContent = `${fmtHKD(postTotalCashflow)} / 月`;
+      document.getElementById('oala-gain-desc').textContent = isPostQualified
+        ? `含長生津 ${fmtHKD(postOALA)} + 年金 + 原入息`
+        : `未合資格領取長生津 (僅年金 + 原入息)`;
+      document.getElementById('annual-gain-hkd').textContent = `${monthlyNetGain >= 0 ? '+' : ''} ${fmtHKD(annualNetGain)} / 年`;
+
+      // Tuner labels
+      document.getElementById('custom-prem-label').textContent = `${fmtUSD(activePremUSD)} (${fmtHKD(activePremHKD)})`;
+      if (maxAllowedPremHKD >= minRequiredPremHKD && minRequiredPremHKD > 0) {
+        document.getElementById('sweet-spot-tag').textContent = `合資格黃金區間：${fmtHKD(minRequiredPremHKD)} – ${fmtHKD(maxAllowedPremHKD)}`;
+        document.getElementById('sweet-spot-tag').className = 'text-[11px] px-2.5 py-0.5 rounded bg-[#1b2a41] text-[#ffbd59] font-medium';
+      } else if (minRequiredPremHKD === 0 && isPreQualified) {
+        document.getElementById('sweet-spot-tag').textContent = `已達標！額外可投保空間：最多 ${fmtHKD(maxAllowedPremHKD)}`;
+        document.getElementById('sweet-spot-tag').className = 'text-[11px] px-2.5 py-0.5 rounded bg-[#449bb0]/20 text-[#1b2a41] font-medium';
+      } else {
+        document.getElementById('sweet-spot-tag').textContent = `入息空間有限，配置後總入息將高於上限`;
+        document.getElementById('sweet-spot-tag').className = 'text-[11px] px-2.5 py-0.5 rounded bg-rose-100 text-rose-800 font-medium';
+      }
+
+      // Feasibility Pill & Advisory Note
+      const pill = document.getElementById('solution-feasibility-pill');
+      const noteBox = document.getElementById('advisory-note-box');
+
+      if (isPreQualified && activePremHKD === 0) {
+        pill.textContent = '✓ 現已完全符合資格';
+        pill.className = 'self-start sm:self-center text-xs font-bold px-3 py-1 rounded-full bg-[#449bb0]/15 text-[#1b2a41] border border-[#449bb0]/40';
+        noteBox.className = 'mt-5 p-4 rounded-xl bg-[#449bb0]/10 border border-[#449bb0]/35 text-xs sm:text-sm text-[#1b2a41] leading-relaxed';
+        noteBox.innerHTML = `
+          <strong>規劃分析：</strong>客戶現有資產（${fmtHKD(assets)}）及每月入息（${fmtHKD(income)}）均低於社署${rule.label}上限，<strong>可直接申請長者生活津貼（65歲起每月 ${fmtHKD(potentialOALA)}）</strong>。若客戶希望將銀行低息存款轉化為終身保證長俸，仍可配置「FWD 盈一生」（最高可投保 <strong>${fmtHKD(maxAllowedPremHKD)}</strong> 而不影響長生津資格）。
+        `;
+      } else if (!isPreIncomePass) {
+        pill.textContent = '✕ 現有每月入息已超標';
+        pill.className = 'self-start sm:self-center text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-800';
+        noteBox.className = 'mt-5 p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-xs sm:text-sm text-rose-950 leading-relaxed';
+        noteBox.innerHTML = `
+          <strong>規劃分析：</strong>客戶現有每月固定入息為 <strong>${fmtHKD(income)}</strong>，已超出社署${rule.label}入息上限（${fmtHKD(rule.incomeLimit)}）達 <strong>${fmtHKD(incomeExcess)}</strong>。由於購買年金會增加每月固定入息，因此無法透過投保年金符合長生津資格。建議仍可配置「FWD 盈一生」作穩健長線收息，並於70歲申請<strong>不設經濟審查的高齡津貼（生果金，每月 HK$1,675）</strong>。
+        `;
+      } else if (isPostQualified) {
+        pill.textContent = '✓ 配置後雙重達標';
+        pill.className = 'self-start sm:self-center text-xs font-bold px-3 py-1 rounded-full bg-[#449bb0]/15 text-[#1b2a41] border border-[#449bb0]/40';
+        noteBox.className = 'mt-5 p-4 rounded-xl bg-[#449bb0]/10 border border-[#449bb0]/35 text-xs sm:text-sm text-[#1b2a41] leading-relaxed';
+        noteBox.innerHTML = `
+          <strong>黃金配置方案（${actualAge}歲${genderLabel}｜${planCode}${discountPct > 0 ? `｜享${discountPct}%保費折扣` : ''}）：</strong>客戶只需實際出資 <strong>${fmtHKD(activePremHKD)}（約 ${fmtUSD(activePremUSD)}）</strong> 投保「FWD 盈一生」${discountPct > 0 ? `（折前名義保費高達 <strong>${fmtHKD(nominalPremHKD)}</strong>，直接節省 <strong>${fmtHKD(discountSavedHKD)}</strong>）` : ''}，該筆出資即獲社署豁免計入資產，剩餘資產降至 <strong>${fmtHKD(postAssets)}</strong>（符合 ${fmtHKD(rule.assetLimit)} 上限）；同時保單派發期每月保證年金 <strong>${fmtHKD(monthlyAnnuityHKD)}</strong>（${discountPct > 0 ? `折實年派率 ${effectiveAnnualRatePct}%` : `年派率 ${baseAnnualRatePct}%`}），連同原入息共 <strong>${fmtHKD(postIncome)}</strong>（低於 ${fmtHKD(rule.incomeLimit)} 上限）。客戶不僅<strong>合資格領取每月 ${fmtHKD(potentialOALA)} 長生津</strong>，每月總現金流更由 ${fmtHKD(preTotalCashflow)} 躍升至 <strong>${fmtHKD(postTotalCashflow)}</strong>！
+        `;
+      } else {
+        pill.textContent = !isPostAssetPass ? '⚠ 資產仍未降至限額內' : '⚠ 年金入息令總入息超標';
+        pill.className = 'self-start sm:self-center text-xs font-bold px-3 py-1 rounded-full bg-[#ffbd59]/30 text-[#1b2a41]';
+        noteBox.className = 'mt-5 p-4 rounded-xl bg-[#ffbd59]/20 border border-[#ffbd59]/60 text-xs sm:text-sm text-[#1b2a41] leading-relaxed';
+        if (!isPostAssetPass) {
+          noteBox.innerHTML = `
+            <strong>調整提示：</strong>目前設定的投保額為 ${fmtHKD(activePremHKD)}，扣除後剩餘資產仍有 <strong>${fmtHKD(postAssets)}</strong>，尚差 <strong>${fmtHKD(postAssets - rule.assetLimit)}</strong> 才符合社署資產上限。請將投保額調高至最少 <strong>${fmtHKD(minRequiredPremHKD)}</strong>。
+          `;
+        } else {
+          noteBox.innerHTML = `
+            <strong>入息平衡提示：</strong>由於超額資產高達 ${fmtHKD(assetExcess)}，若全數投保「盈一生」（${fmtHKD(activePremHKD)}），每月派發的保證年金（${fmtHKD(monthlyAnnuityHKD)}）連同原有入息將達 <strong>${fmtHKD(postIncome)}</strong>，超出入息上限 ${fmtHKD(postIncome - rule.incomeLimit)}。<br/>
+            <span class="font-semibold text-[#1b2a41] mt-1 inline-block">💡 進階策略建議：</span>可將 <strong>${fmtHKD(maxAllowedPremHKD)}</strong> 投保「盈一生」（用盡入息額度），其餘超額資金可配合<strong>合規自住物業改善／生活儲備／非年金類家庭傳承規劃</strong>，即可同時符合資產與入息雙重審查！
+          `;
+        }
+      }
+
+      // Comparison Table Updates
+      document.getElementById('tbl-pre-asset').textContent = fmtHKD(assets);
+      document.getElementById('tbl-pre-asset').className = `py-3 text-right font-semibold ${isPreAssetPass ? 'text-[#449bb0]' : 'text-rose-600'}`;
+      document.getElementById('tbl-annuity-prem').textContent = discountPct > 0
+        ? `${fmtHKD(activePremHKD)} (名義 ${fmtHKD(nominalPremHKD)})`
+        : fmtHKD(activePremHKD);
+      document.getElementById('tbl-discount-note').textContent = discountPct > 0
+        ? `享${discountPct}%折扣｜全數豁免`
+        : '全數豁免計算';
+
+      document.getElementById('tbl-pre-income').textContent = fmtHKD(income);
+      document.getElementById('tbl-pre-income').className = `py-3 text-right font-semibold ${isPreIncomePass ? 'text-slate-700' : 'text-rose-600'}`;
+
+      document.getElementById('tbl-post-income').textContent = fmtHKD(postIncome);
+      document.getElementById('tbl-post-income').className = `py-3 text-right font-bold ${isPostIncomePass ? 'text-[#1b2a41]' : 'text-rose-600'}`;
+      document.getElementById('tbl-lim-income').textContent = fmtHKD(rule.incomeLimit);
+
+      document.getElementById('tbl-pre-oala').textContent = isPreQualified ? `+ ${fmtHKD(preOALA)} / 月` : 'HK$0（不符資格）';
+      document.getElementById('tbl-post-oala').textContent = isPostQualified ? `+ ${fmtHKD(postOALA)} / 月` : 'HK$0（不符資格）';
+      document.getElementById('tbl-post-oala').className = `py-3 text-right font-extrabold ${isPostQualified ? 'text-[#1b2a41]' : 'text-slate-400'}`;
+
+      document.getElementById('tbl-pre-total').textContent = fmtHKD(preTotalCashflow);
+      document.getElementById('tbl-post-total').textContent = fmtHKD(postTotalCashflow);
+      document.getElementById('tbl-diff-total').textContent = `${monthlyNetGain >= 0 ? '+' : ''}${fmtHKD(monthlyNetGain)} / 月`;
+
+      // Prepare WhatsApp Summary Text
+      state.lastSummaryText = [
+        `【ZILLION 財富管理｜長者生活津貼 × FWD 盈一生年金規劃摘要】`,
+        `• 申請類別：${rule.label}｜受保人：${actualAge}歲${genderLabel} (ANB ${state.anbAge}歲)`,
+        `• 投保計劃：FWD 盈‧一生年金保險計劃 (${planCode}｜${discountPct > 0 ? `享${discountPct}%折扣，折實年派率 ${effectiveAnnualRatePct}%` : `年保證派發率 ${baseAnnualRatePct}%`})`,
+        `• 現有須計算資產：${fmtHKD(assets)}（社署上限：${fmtHKD(rule.assetLimit)}）`,
+        `• 現有每月入息：${fmtHKD(income)}（社署上限：${fmtHKD(rule.incomeLimit)}）`,
+        `------------------------------------`,
+        `💡 建議配置「FWD 盈一生」年金：`,
+        `• 建議實付總保費：${fmtHKD(activePremHKD)}（約 ${fmtUSD(activePremUSD)}）${discountPct > 0 ? `［名義保費 ${fmtHKD(nominalPremHKD)}，已省 ${fmtHKD(discountSavedHKD)}］` : ''}`,
+        `• 豁免年金保費後剩餘資產：${fmtHKD(postAssets)}`,
+        `• 每月保證終身年金：+${fmtHKD(monthlyAnnuityHKD)} / 月`,
+        `• 長者生活津貼（2026標準）：${isPostQualified ? '+' + fmtHKD(postOALA) + ' / 月（65歲起合資格）' : '未符合資格'}`,
+        `• 派發期每月總可用現金流：${fmtHKD(postTotalCashflow)} / 月（每月淨增 ${fmtHKD(monthlyNetGain)}）`
+      ].join('\n');
+
+      updateModalRateTable(discountPct);
+
+      if (showToastFeedback) {
+        showToast(`已按 ${actualAge}歲${genderLabel}（${planCode}${discountPct > 0 ? `・${discountPct}%折扣` : ''}）完成精算`);
+      }
+    }
+
+    function updateModalRateTable(discountPct) {
+      const factor = 1 - (discountPct / 100);
+      const titleEl = document.getElementById('modal-table-title');
+      const badgeEl = document.getElementById('modal-discount-badge');
+      const tbody = document.getElementById('modal-rate-tbody');
+      if (!titleEl || !tbody) return;
+
+      titleEl.textContent = discountPct > 0
+        ? `2. FWD《盈‧一生年金保險計劃》折實保證年金率（已計 ${discountPct}% 折扣）`
+        : '2. FWD《盈‧一生年金保險計劃》官方保證年金率（未計折扣）';
+      badgeEl.textContent = `目前折扣設定：${discountPct}%`;
+
+      const rows = [
+        { anb: 41, label: '41歲 (40歲投保)', cls: '' },
+        { anb: 51, label: '51歲 (50歲投保)', cls: '' },
+        { anb: 61, label: '61歲 (60歲投保)', cls: 'bg-[#449bb0]/15 font-semibold text-[#1b2a41]' },
+        { anb: 64, label: '64歲 (63歲投保)', cls: 'bg-[#449bb0]/15 font-semibold text-[#1b2a41]' },
+        { anb: 66, label: '66歲 (65歲投保)', cls: 'bg-[#ffbd59]/25 font-bold text-[#1b2a41]' },
+        { anb: 71, label: '71歲 (70歲投保)', cls: '' },
+        { anb: 76, label: '76歲 (75歲投保)', cls: '' },
+        { anb: 81, label: '81歲 (80歲投保)', cls: '' },
+        { anb: 86, label: '86歲 (85歲投保)', cls: '' }
+      ];
+
+      const fmtPair = (term, anb) => {
+        const m = FWD_PROPOSAL_DATA[term].male[anb];
+        const f = FWD_PROPOSAL_DATA[term].female[anb];
+        if (!m || !f) return '不適用';
+        const mRate = ((m.monthlyUSD * 12) / (m.premUSD * factor) * 100).toFixed(2);
+        const fRate = ((f.monthlyUSD * 12) / (f.premUSD * factor) * 100).toFixed(2);
+        return `${mRate}% / ${fRate}%`;
+      };
+
+      tbody.innerHTML = rows.map(r => `
+        <tr class="${r.cls}">
+          <td class="py-1.5 font-semibold">${r.label}</td>
+          <td>${fmtPair(1, r.anb)}</td>
+          <td>${fmtPair(2, r.anb)}</td>
+          <td>${fmtPair(5, r.anb)}</td>
+        </tr>
+      `).join('');
+    }
+    }
+
+    function updateStatusBanner(isPass, isAssetPass, isIncomePass, assetExcess, incomeExcess, potentialOALA) {
+      const header = document.getElementById('status-header');
+      const iconBox = document.getElementById('status-icon-box');
+      const tag = document.getElementById('status-tag');
+      const title = document.getElementById('status-title');
+
+      if (isPass) {
+        header.className = 'px-6 py-5 bg-[#449bb0]/15 border-b border-[#449bb0]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4';
+        iconBox.className = 'w-11 h-11 rounded-xl bg-[#449bb0] text-white flex items-center justify-center shrink-0 shadow-sm';
+        iconBox.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>`;
+        tag.className = 'text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-[#449bb0]/25 text-[#1b2a41]';
+        tag.textContent = '符合申請資格';
+        title.textContent = `恭喜！現況已符合長生津資格，65歲起每月可領取 ${fmtHKD(potentialOALA)}`;
+      } else {
+        header.className = 'px-6 py-5 bg-[#ffbd59]/20 border-b border-[#ffbd59]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4';
+        iconBox.className = 'w-11 h-11 rounded-xl bg-[#ffbd59] text-[#1b2a41] flex items-center justify-center shrink-0 shadow-sm';
+        iconBox.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`;
+        tag.className = 'text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-[#ffbd59]/40 text-[#1b2a41]';
+
+        if (!isAssetPass && !isIncomePass) {
+          tag.textContent = '資產及入息均超額';
+          title.textContent = `現時資產超額 ${fmtHKD(assetExcess)}，且每月入息超額 ${fmtHKD(incomeExcess)}`;
+        } else if (!isAssetPass) {
+          tag.textContent = '資產超出限額';
+          title.textContent = `現時資產超出社署上限 ${fmtHKD(assetExcess)}，暫未符合申請資格`;
+        } else {
+          tag.textContent = '每月入息超出限額';
+          title.textContent = `現時每月入息超出上限 ${fmtHKD(incomeExcess)}，暫未符合申請資格`;
+        }
+      }
+    }
+
+    function updateGauges(assets, assetLimit, income, incomeLimit, isAssetPass, isIncomePass, assetExcess, incomeExcess) {
+      document.getElementById('display-current-asset').textContent = fmtHKD(assets);
+      document.getElementById('display-limit-asset').textContent = `上限 ${fmtHKD(assetLimit)}`;
+      const assetPct = Math.min(100, Math.round((assets / assetLimit) * 100));
+      const barAsset = document.getElementById('bar-asset');
+      barAsset.style.width = `${assetPct}%`;
+      barAsset.className = `h-full rounded-full transition-all duration-300 ${isAssetPass ? 'bg-[#449bb0]' : 'bg-rose-500'}`;
+
+      const assetBadge = document.getElementById('asset-pass-badge');
+      if (isAssetPass) {
+        assetBadge.textContent = `符合（尚餘額度 ${fmtHKD(assetLimit - assets)}）`;
+        assetBadge.className = 'text-xs font-bold text-[#449bb0]';
+      } else {
+        assetBadge.textContent = `超額 ${fmtHKD(assetExcess)}`;
+        assetBadge.className = 'text-xs font-bold text-rose-600';
+      }
+
+      document.getElementById('display-current-income').textContent = fmtHKD(income);
+      document.getElementById('display-limit-income').textContent = `上限 ${fmtHKD(incomeLimit)}`;
+      const incomePct = Math.min(100, Math.round((income / incomeLimit) * 100));
+      const barIncome = document.getElementById('bar-income');
+      barIncome.style.width = `${incomePct}%`;
+      barIncome.className = `h-full rounded-full transition-all duration-300 ${isIncomePass ? 'bg-[#449bb0]' : 'bg-rose-500'}`;
+
+      const incomeBadge = document.getElementById('income-pass-badge');
+      if (isIncomePass) {
+        incomeBadge.textContent = `符合（尚餘額度 ${fmtHKD(incomeLimit - income)}）`;
+        incomeBadge.className = 'text-xs font-bold text-[#449bb0]';
+      } else {
+        incomeBadge.textContent = `超額 ${fmtHKD(incomeExcess)}`;
+        incomeBadge.className = 'text-xs font-bold text-rose-600';
+      }
+    }
+
+    // =========================================================================
+    // 5. MODAL & CLIPBOARD UTILITIES
+    // =========================================================================
+    function openRuleModal() {
+      const modal = document.getElementById('rule-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRuleModal() {
+      const modal = document.getElementById('rule-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copySummaryToClipboard() {
+      const textarea = document.createElement('textarea');
+      textarea.value = state.lastSummaryText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('已複製客戶規劃摘要，可直接貼上 WhatsApp 發送！');
+      } catch (err) {
+        showToast('複製失敗，請手動選取內容複製');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      calculate(false);
+    });
+  </script>
+</body>
+</html>
