@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Zillion Wealth News · 每日環球理財與投資晨訊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --zc-dark-blue: #1b2a41;
+      --zc-teal: #449bb0;
+      --zc-teal-light: #eaf5f7;
+      --zc-orange: #ffbd59;
+      --zc-orange-dark: #d97706;
+      --zc-orange-light: #fff8eb;
+      --zc-grey-bg: #f8fafc;
+      --zc-card-bg: #ffffff;
+      --zc-card-border: #e2e8f0;
+      --zc-text-main: #1b2a41;
+      --zc-text-muted: #64748b;
+      --zc-up-green: #10b981;
+      --zc-down-red: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--zc-grey-bg);
+      color: var(--zc-text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: linear-gradient(90deg, #1b2a41 0%, #223755 100%);
+      color: #ffffff;
+      font-size: 0.82rem;
+      padding: 9px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--zc-orange);
+    }
+    .top-strip .motto {
+      color: #cbd5e1;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+    .top-strip .badge-live {
+      background: rgba(68, 155, 176, 0.25);
+      color: #67e8f9;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      border: 1px solid rgba(68, 155, 176, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #10b981;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 24px;
+    }
+
+    /* Top Utility Bar: Left Language Switcher, Right Action Buttons */
+    .utility-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      padding: 3px;
+      border-radius: 9px;
+      border: 1px solid var(--zc-card-border);
+      box-shadow: 0 2px 6px rgba(27, 42, 65, 0.04);
+      gap: 2px;
+    }
+    .lang-icon-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--zc-teal);
+      padding: 4px 8px 4px 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--zc-text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-family: inherit;
+    }
+    .lang-btn:hover {
+      color: var(--zc-dark-blue);
+      background: #f1f5f9;
+    }
+    .lang-btn.active {
+      background: var(--zc-dark-blue);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 2px 4px rgba(27, 42, 65, 0.15);
+    }
+
+    /* Action bar */
+    .action-bar {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-action {
+      background: #ffffff;
+      border: 1px solid var(--zc-card-border);
+      color: var(--zc-dark-blue);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-action:hover {
+      background: var(--zc-teal-light);
+      border-color: var(--zc-teal);
+      color: var(--zc-teal);
+    }
+    .btn-action.primary {
+      background: var(--zc-teal);
+      color: #ffffff;
+      border-color: var(--zc-teal);
+    }
+    .btn-action.primary:hover {
+      background: #368194;
+    }
+
+    /* Masthead Header Card */
+    .header-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 30px;
+      box-shadow: 0 4px 20px rgba(27, 42, 65, 0.06);
+      border: 1px solid var(--zc-card-border);
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--zc-teal) 0%, var(--zc-orange) 100%);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 16px;
+    }
+    .brand-title-area {
+      flex: 1 1 auto;
+    }
+    .brand-logo {
+      height: 36px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .brand-title-area h1 {
+      font-size: 1.80rem;
+      font-weight: 900;
+      color: var(--zc-dark-blue);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+    .brand-title-area h1 .news-tag {
+      background: var(--zc-teal);
+      color: #ffffff;
+      font-size: 0.80rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-subtitle {
+      color: var(--zc-text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .edition-info {
+      flex: 0 0 auto;
+      text-align: right;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+    .edition-date {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--zc-dark-blue);
+    }
+    .edition-time {
+      color: var(--zc-orange-dark);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .edition-author {
+      color: var(--zc-text-muted);
+      font-size: 0.80rem;
+      margin-top: 4px;
+    }
+
+    /* Section Headers with Expand Toggle */
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--zc-dark-blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon-pill {
+      background: var(--zc-teal);
+      color: #ffffff;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .section-desc-tag {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--zc-text-muted);
+      background: #e2e8f0;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 6px;
+      white-space: nowrap;
+    }
+
+    /* Toggle Button for 7-12 Indices */
+    .toggle-indices-btn {
+      background: #ffffff;
+      border: 1px solid var(--zc-teal);
+      color: var(--zc-teal);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .toggle-indices-btn:hover {
+      background: var(--zc-teal);
+      color: #ffffff;
+    }
+    .toggle-indices-btn.expanded {
+      background: var(--zc-teal-light);
+      color: var(--zc-teal);
+    }
+
+    /* SECTION 1: 6 Cards Per Row */
+    .indices-row-6 {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .indices-row-hidden {
+      display: none;
+    }
+    .indices-row-visible {
+      display: grid;
+    }
+
+    /* SECTION 2: 5 Cards Per Row */
+    .indices-row-5 {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    /* Metric Cards */
+    .metric-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--zc-card-border);
+      box-shadow: 0 2px 5px rgba(27, 42, 65, 0.04);
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 96px;
+      overflow: hidden;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(27, 42, 65, 0.08);
+      border-color: var(--zc-teal);
+    }
+    
+    .title-group {
+      margin-bottom: 4px;
+    }
+    .title-primary {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--zc-dark-blue);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .title-sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--zc-text-muted);
+      letter-spacing: 0.2px;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 4px;
+      white-space: nowrap;
+      margin-bottom: 3px;
+    }
+    .price-value {
+      font-size: 1.06rem;
+      font-weight: 800;
+      color: var(--zc-dark-blue);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .change-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      white-space: nowrap;
+    }
+    .change-up {
+      color: var(--zc-up-green);
+    }
+    .change-down {
+      color: var(--zc-down-red);
+    }
+
+    .card-footer-note {
+      font-size: 0.66rem;
+      color: #64748b;
+      border-top: 1px dashed #e2e8f0;
+      padding-top: 3px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Highlights Layout */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 22px;
+      width: 100%;
+    }
+
+    .news-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid var(--zc-card-border);
+      box-shadow: 0 3px 12px rgba(27, 42, 65, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease-in-out;
+    }
+    .news-card:hover {
+      border-color: var(--zc-teal);
+      box-shadow: 0 8px 22px rgba(68, 155, 176, 0.12);
+    }
+    .card-top {
+      margin-bottom: 12px;
+    }
+    .badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+    .cat-badge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cat-wealth {
+      background: var(--zc-teal-light);
+      color: var(--zc-teal);
+      border: 1px solid rgba(68, 155, 176, 0.3);
+    }
+    .cat-reg {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+    .cat-market {
+      background: var(--zc-orange-light);
+      color: var(--zc-orange-dark);
+      border: 1px solid #fed7aa;
+    }
+    .source-tag {
+      font-size: 0.74rem;
+      color: var(--zc-text-muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .source-tag a {
+      color: var(--zc-teal);
+      text-decoration: none;
+    }
+    .source-tag a:hover {
+      text-decoration: underline;
+    }
+
+    .news-title {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--zc-dark-blue);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .news-summary {
+      font-size: 0.86rem;
+      color: #334155;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    /* Advisory Impact Box */
+    .advisory-box {
+      background: #f8fafc;
+      border-left: 3px solid var(--zc-orange);
+      padding: 10px 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.80rem;
+      color: var(--zc-dark-blue);
+      line-height: 1.5;
+    }
+    .advisory-box strong {
+      color: var(--zc-orange-dark);
+      display: block;
+      margin-bottom: 3px;
+      font-weight: 700;
+    }
+
+    /* Strategy Insight Callout Banner */
+    .insight-banner {
+      background: linear-gradient(135deg, var(--zc-dark-blue) 0%, #223755 100%);
+      color: #ffffff;
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 28px;
+      border: 1px solid #334155;
+      width: 100%;
+    }
+    .insight-badge {
+      display: inline-block;
+      background: var(--zc-orange);
+      color: var(--zc-dark-blue);
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      white-space: nowrap;
+    }
+    .insight-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .insight-desc {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* Footer & Compliance */
+    .footer {
+      text-align: center;
+      padding-top: 22px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.78rem;
+      color: var(--zc-text-muted);
+      width: 100%;
+    }
+    .footer-brand {
+      font-weight: 800;
+      color: var(--zc-dark-blue);
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+    .footer-disclaimer {
+      max-width: 860px;
+      margin: 8px auto 0;
+      line-height: 1.5;
+      font-size: 0.73rem;
+    }
+
+    /* Responsive Screen Styles */
+    @media screen and (max-width: 860px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      .indices-row-6 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .indices-row-5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    @media screen and (max-width: 680px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .edition-info {
+        text-align: left;
+        margin-top: 8px;
+      }
+      .edition-time {
+        justify-content: flex-start;
+      }
+      .utility-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* PRINT / PDF PREVIEW: UNIFIED 100% WIDTH ACROSS PAGE 1 & 2, 1.2CM MARGINS */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        box-sizing: border-box !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 1.2cm !important;
+      }
+      html, body {
+        background-color: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+      }
+      .action-bar, .lang-switcher, .utility-bar, .toggle-indices-btn {
+        display: none !important;
+      }
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .top-strip {
+        display: flex !important;
+        background: #1b2a41 !important;
+        color: #ffffff !important;
+        padding: 6px 14px !important;
+        font-size: 0.70rem !important;
+        margin-bottom: 10px !important;
+        border-radius: 6px !important;
+        width: 100% !important;
+      }
+      .header-card {
+        padding: 12px 18px !important;
+        margin-bottom: 12px !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        width: 100% !important;
+      }
+      .header-content {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      .brand-title-area {
+        flex: 1 1 auto !important;
+        text-align: left !important;
+      }
+      .brand-logo {
+        height: 26px !important;
+      }
+      .brand-title-area h1 {
+        font-size: 1.32rem !important;
+        margin-bottom: 2px !important;
+        white-space: nowrap !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+      }
+      .brand-title-area h1 .news-tag {
+        font-size: 0.70rem !important;
+        padding: 2px 7px !important;
+        white-space: nowrap !important;
+      }
+      .brand-subtitle {
+        font-size: 0.76rem !important;
+        margin-top: 1px !important;
+        white-space: nowrap !important;
+      }
+      .edition-info {
+        flex: 0 0 auto !important;
+        text-align: right !important;
+        white-space: nowrap !important;
+        margin-left: 10px !important;
+      }
+      .edition-date {
+        font-size: 1.00rem !important;
+        line-height: 1.2 !important;
+      }
+      .edition-time {
+        font-size: 0.72rem !important;
+        margin-top: 1px !important;
+      }
+      .edition-author {
+        font-size: 0.68rem !important;
+        margin-top: 1px !important;
+      }
+      .section-header-row {
+        margin-top: 8px !important;
+        margin-bottom: 6px !important;
+        width: 100% !important;
+      }
+      .section-title {
+        font-size: 0.92rem !important;
+      }
+      .section-desc-tag {
+        font-size: 0.68rem !important;
+        padding: 2px 6px !important;
+        white-space: nowrap !important;
+      }
+      .indices-row-6 {
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        margin-bottom: 8px !important;
+        width: 100% !important;
+      }
+      .indices-row-hidden {
+        display: none !important;
+      }
+      .indices-row-visible {
+        display: grid !important;
+      }
+      .indices-row-5 {
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        margin-bottom: 10px !important;
+        width: 100% !important;
+      }
+      .metric-card {
+        padding: 5px 6px !important;
+        min-height: 74px !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+      }
+      .title-primary {
+        font-size: 0.66rem !important;
+        margin-bottom: 1px !important;
+      }
+      .title-sub {
+        font-size: 0.50rem !important;
+      }
+      .price-value {
+        font-size: 0.76rem !important;
+      }
+      .change-badge {
+        font-size: 0.56rem !important;
+      }
+      .card-footer-note {
+        font-size: 0.50rem !important;
+        padding-top: 2px !important;
+        margin-top: 1px !important;
+      }
+      .news-grid-page1 {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
+      }
+      .print-page-2 {
+        break-before: page !important;
+        page-break-before: always !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .news-grid-page2 {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        margin-bottom: 12px !important;
+        width: 100% !important;
+      }
+      .news-card {
+        padding: 12px 14px !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        width: 100% !important;
+      }
+      .cat-badge {
+        font-size: 0.68rem !important;
+        padding: 2px 7px !important;
+        white-space: nowrap !important;
+      }
+      .news-title {
+        font-size: 0.86rem !important;
+        line-height: 1.36 !important;
+        margin-bottom: 5px !important;
+      }
+      .news-summary {
+        font-size: 0.74rem !important;
+        line-height: 1.42 !important;
+        margin-bottom: 7px !important;
+      }
+      .advisory-box {
+        padding: 6px 9px !important;
+        font-size: 0.70rem !important;
+        line-height: 1.38 !important;
+        border-radius: 0 6px 6px 0 !important;
+      }
+      .insight-banner {
+        padding: 13px 16px !important;
+        margin-bottom: 12px !important;
+        background: #1b2a41 !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        width: 100% !important;
+      }
+      .insight-title {
+        font-size: 0.92rem !important;
+        margin-bottom: 4px !important;
+      }
+      .insight-desc {
+        font-size: 0.75rem !important;
+        line-height: 1.46 !important;
+      }
+      .footer {
+        padding-top: 10px !important;
+        font-size: 0.68rem !important;
+        border-top: 1px solid #cbd5e1 !important;
+        width: 100% !important;
+      }
+      .footer-disclaimer {
+        font-size: 0.60rem !important;
+        line-height: 1.40 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="motto" id="text-motto">"Enriching the life of the people we touch" — Zillion Wealth 專業財富與保障管理團隊</div>
+    <div>
+      <span class="badge-live"><span class="pulse-dot"></span> <span id="text-top-badge">每日晨間 09:00 AM HKT 準時發送</span></span>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Top Utility Bar -->
+    <div class="utility-bar">
+      <div class="lang-switcher">
+        <span class="lang-icon-label">🌐 語言:</span>
+        <button class="lang-btn active" id="btn-tc" onclick="changeLanguage('tc')">繁體中文</button>
+        <button class="lang-btn" id="btn-sc" onclick="changeLanguage('sc')">简体中文</button>
+        <button class="lang-btn" id="btn-en" onclick="changeLanguage('en')">English</button>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn-action" onclick="window.print()">
+          <span id="text-btn-print">🖨️ 列印 / 另存 PDF</span>
+        </button>
+        <button class="btn-action primary" onclick="copyShareLink()">
+          <span id="text-btn-share">🔗 複製分享連結</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header Card -->
+    <header class="header-card">
+      <div class="header-content">
+        <div class="brand-title-area">
+          <h1>
+            <img src="data:image/png;base64,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" alt="Zillion Wealth Logo" class="brand-logo">
+            Zillion Wealth News
+            <span class="news-tag" id="text-header-tag">每日晨訊</span>
+          </h1>
+          <div class="brand-subtitle" id="text-header-subtitle">
+            保險 · 理財 · 環球市場 · 宏觀資產配置 6 大核心焦點
+          </div>
+        </div>
+        <div class="edition-info">
+          <div class="edition-date" id="text-header-date">2026 年 11 月 19 日 星期四</div>
+          <div class="edition-time">
+            <span id="text-header-time">⏰ 09:00 AM HKT 發行 · 隔夜權威結算基準</span>
+          </div>
+          <div class="edition-author" id="text-header-author">
+            主編：Fasun Wong | Certified Trust Planner (認可信託策劃師)
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: 環球股票市場指數 及美債息 & 波動率 -->
+    <section>
+      <div class="section-header-row">
+        <div class="section-title">
+          <span class="icon-pill">📈</span>
+          <span id="text-sec1-title">環球股票市場指數 及美債息 & 波動率 (Stock Market Index, Yields & VIX)</span>
+          <span class="section-desc-tag" id="text-sec1-tag">隔夜官方收市結算價</span>
+        </div>
+        <button class="toggle-indices-btn" id="btn-toggle-7-12" onclick="toggleMoreIndices()">
+          <span id="text-toggle-btn">+ 展開 7-12 歐亞債息指數</span>
+        </button>
+      </div>
+
+      <!-- 第 1 排 (1 ~ 6)：1. HSI, 2. S&P, 3. DOW JONES, 4. NASDAQ, 5. VIX, 6. US 10Y Treasury -->
+      <div class="indices-row-6">
+        
+        <!-- 1. HSI 香港恒生指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-hsi-name">香港恒生指數</div>
+            <div class="title-sub">HSI · Hang Seng</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">23,264.96</span>
+            <span class="change-badge change-down">▼ -1.03%</span>
+          </div>
+          <div class="card-footer-note" id="idx-hsi-note">亞太科技股受美股拖累</div>
+        </div>
+
+        <!-- 2. S&P 標普 500 指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-sp-name">標普 500 指數</div>
+            <div class="title-sub">S&P 500 Index</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">7,323.63</span>
+            <span class="change-badge change-down">▼ -0.23%</span>
+          </div>
+          <div class="card-footer-note" id="idx-sp-note">連跌五日 · 創6月以來最長跌浪</div>
+        </div>
+
+        <!-- 3. DOW JONES 道瓊斯工業指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-dji-name">道瓊斯工業指數</div>
+            <div class="title-sub">Dow Jones (DJIA)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">50,198.17</span>
+            <span class="change-badge change-down">▼ -1.11%</span>
+          </div>
+          <div class="card-footer-note" id="idx-dji-note">跌 561.25 點 · 醫保股拖累</div>
+        </div>
+
+        <!-- 4. NASDAQ 納斯達克指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-nas-name">納斯達克綜合指數</div>
+            <div class="title-sub">Nasdaq Composite</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">24,429.88</span>
+            <span class="change-badge change-up">▲ +0.42%</span>
+          </div>
+          <div class="card-footer-note" id="idx-nas-note">Anthropic IPO 前夕逆市微升</div>
+        </div>
+
+        <!-- 5. VIX 恐慌指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-vix-name">CBOE 恐慌指數</div>
+            <div class="title-sub">Cboe Volatility (VIX)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">24.57</span>
+            <span class="change-badge change-down">▼ -3.50%</span>
+          </div>
+          <div class="card-footer-note" id="idx-vix-note">高於 24 警戒線 · 市場波動</div>
+        </div>
+
+        <!-- 6. US 10Y Treasury 美國 10 年期債息 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-us10-name">美國 10 年期債息</div>
+            <div class="title-sub">US 10Y Treasury</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">5.09%</span>
+            <span class="change-badge change-down">▼ -0.01%</span>
+          </div>
+          <div class="card-footer-note" id="idx-us10-note">企穩 5% 上方 · 靜待聯儲紀錄</div>
+        </div>
+
+      </div>
+
+      <!-- 第 2 排 (7 ~ 12 · 可展開)：EUROPE, JAPAN, KOREA, TAIWAN, 滬深 300, 美國 2 年期債息 -->
+      <div class="indices-row-6 indices-row-hidden" id="more-indices-row">
+        
+        <!-- 7. EUROPE 歐洲斯托克 50 指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-eu-name">歐洲斯托克 50</div>
+            <div class="title-sub">Euro Stoxx 50</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">6,156.00</span>
+            <span class="change-badge change-up">▼ -0.90%</span>
+          </div>
+          <div class="card-footer-note" id="idx-eu-note">歐股連跌四日 · 風險胃納轉弱</div>
+        </div>
+
+        <!-- 8. JAPAN 日本日經 225 指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-nik-name">日本日經 225</div>
+            <div class="title-sub">Nikkei 225 (Japan)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">59,024.28</span>
+            <span class="change-badge change-up">▲ +0.28%</span>
+          </div>
+          <div class="card-footer-note" id="idx-nik-note">晶片股領軍微升</div>
+        </div>
+
+        <!-- 9. KOREA 韓國綜合指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-kor-name">韓國綜合指數</div>
+            <div class="title-sub">KOSPI (Korea)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">5,067.35</span>
+            <span class="change-badge change-up">▲ +1.99%</span>
+          </div>
+          <div class="card-footer-note" id="idx-kor-note">重返 5,000 點大關</div>
+        </div>
+
+        <!-- 10. TAIWAN 台灣加權指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-twn-name">台灣加權指數</div>
+            <div class="title-sub">TAIEX (Taiwan)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">43,091.87</span>
+            <span class="change-badge change-down">▼ -2.63%</span>
+          </div>
+          <div class="card-footer-note" id="idx-twn-note">AI 供應鏈震盪整固</div>
+        </div>
+
+        <!-- 11. 滬深 300 指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-csi-name">滬深 300 指數</div>
+            <div class="title-sub">CSI 300 (China)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">3,985.40</span>
+            <span class="change-badge change-up">▲ +0.18%</span>
+          </div>
+          <div class="card-footer-note" id="idx-csi-note">國產 AI 概念股造好</div>
+        </div>
+
+        <!-- 12. 美國 2 年期債息 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-us2-name">美國 2 年期債息</div>
+            <div class="title-sub">US 2Y Treasury</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">4.80%</span>
+            <span class="change-badge change-up">▲ +0.01%</span>
+          </div>
+          <div class="card-footer-note" id="idx-us2-note">反映加息預期升溫</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: 大宗商品 · 加密貨幣 · 樓市指數 (5 個打橫一行) -->
+    <section>
+      <div class="section-header-row">
+        <div class="section-title">
+          <span class="icon-pill">🪙</span>
+          <span id="text-sec2-title">大宗商品 · 加密貨幣 · 樓市指數 (Commodities, Crypto & Property Index)</span>
+          <span class="section-desc-tag" id="text-sec2-tag">晨間最新報價</span>
+        </div>
+      </div>
+
+      <div class="indices-row-5">
+        
+        <!-- 1. 黃金 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-gold-name">國際現貨黃金</div>
+            <div class="title-sub">Gold Spot (XAU/USD)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">$3,767.56</span>
+            <span class="change-badge change-down">▼ -2.13%</span>
+          </div>
+          <div class="card-footer-note" id="idx-gold-note">強美元壓抑 · 14個月低位</div>
+        </div>
+
+        <!-- 2. 白銀 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-sil-name">國際現貨白銀</div>
+            <div class="title-sub">Silver Spot (XAG/USD)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">$45.08</span>
+            <span class="change-badge change-down">▼ -4.65%</span>
+          </div>
+          <div class="card-footer-note" id="idx-sil-note">貴金屬同步回調</div>
+        </div>
+
+        <!-- 3. 布蘭特原油期貨 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-oil-name">布蘭特原油期貨</div>
+            <div class="title-sub">Brent Crude Oil</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">$92.00</span>
+            <span class="change-badge change-down">▼ -1.22%</span>
+          </div>
+          <div class="card-footer-note" id="idx-oil-note">美國庫存上升壓低油價</div>
+        </div>
+
+        <!-- 4. 比特幣加密貨幣 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-btc-name">比特幣加密貨幣</div>
+            <div class="title-sub">Bitcoin (BTC/USD)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">$64,501</span>
+            <span class="change-badge change-down">▼ -0.40%</span>
+          </div>
+          <div class="card-footer-note" id="idx-btc-note">於 65,000 關口下方整固</div>
+        </div>
+
+        <!-- 5. 中原樓市領先指數 -->
+        <div class="metric-card">
+          <div class="title-group">
+            <div class="title-primary" id="idx-ccl-name">中原城市領先指數</div>
+            <div class="title-sub">Centaline CCL (HK)</div>
+          </div>
+          <div class="price-row">
+            <span class="price-value">158.61</span>
+            <span class="change-badge change-down">▼ -0.31%</span>
+          </div>
+          <div class="card-footer-note" id="idx-ccl-note">11月13日公布 · 連跌5周</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3 (PAGE 1 PART): 今日保險理財與投資 6 大新聞精粹 (第 1、2 條) -->
+    <section>
+      <div class="section-header-row">
+        <div class="section-title">
+          <span class="icon-pill">📰</span>
+          <span id="text-sec3-title">今日保險、理財與投資 6 大新聞精粹 (Top 6 Intelligence Highlights)</span>
+        </div>
+      </div>
+
+      <div class="news-grid news-grid-page1">
+        
+        <!-- Highlight 1 -->
+        <article class="news-card">
+          <div class="card-top">
+            <div class="badge-row">
+              <span class="cat-badge cat-wealth" id="hl-cat-1">財富傳承 · 保單新趨勢</span>
+              <span class="source-tag"><span id="hl-src-label-1">來源：</span><a href="https://www.scmp.com/business/article/3374592/hong-kong-insurers-expanding-wealth-management-policy-sets-record?module=top_story&pgtype=section" target="_blank">South China Morning Post</a></span>
+            </div>
+            <h2 class="news-title" id="hl-title-1">1. 港險企加速拓展財富管理版圖：大額保單成比傳統信託更靈活之遺產規劃方案</h2>
+            <p class="news-summary" id="hl-sum-1">
+              《南華早報》最新報道指出，隨著巨額人壽保單屢破紀錄，香港保險公司正全面擴大高淨值財富管理業務。多位業界高層表示，在合適的家族傳承個案中，大額分紅壽險比傳統設立信託具備更高靈活性與更低維持成本，成為跨代資產分配核心工具。
+            </p>
+          </div>
+          <div class="advisory-box">
+            <strong id="hl-adv-title-1">💡 Zillion Wealth 理財顧問啟示</strong>
+            <span id="hl-adv-desc-1">面對中產至高淨值客戶，可強調「保單傳承 + 類信託指定受益人分期給付」功能，既無需支付高昂信託年費，又能精準鎖定跨代財富分配。</span>
+          </div>
+        </article>
+
+        <!-- Highlight 2 -->
+        <article class="news-card">
+          <div class="card-top">
+            <div class="badge-row">
+              <span class="cat-badge cat-wealth" id="hl-cat-2">家族辦公室 · 稅務優惠</span>
+              <span class="source-tag"><span id="hl-src-label-2">來源：</span><a href="https://www.hubbis.com/news/hong-kong-expands-family-office-tax-breaks-to-include-gold-and-digital-assets" target="_blank">Hubbis & InvestHK</a></span>
+            </div>
+            <h2 class="news-title" id="hl-title-2">2. 香港單一家族辦公室突破 3,380 間，稅務寬免擴展至實物黃金與數字資產</h2>
+            <p class="news-summary" id="hl-sum-2">
+              投資推廣署最新研究顯示，香港單一家族辦公室（SFO）已突破 3,380 間，每年為本地經濟貢獻約 126 億港元。2026–27 年度財政預算案更將 0% 利得稅豁免資格擴展至實物黃金、數字資產及私人信貸，進一步吸引環球家族把亞太總部及保單架構落戶香港。
+            </p>
+          </div>
+          <div class="advisory-box">
+            <strong id="hl-adv-title-2">💡 Zillion Wealth 理財顧問啟示</strong>
+            <span id="hl-adv-desc-2">家族辦公室數量激增帶動跨境高淨值人士對「資本保全 + 醫療保障」的雙重需求，顧問可結合稅務優勢切入全面家庭保障檢視。</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PAGE 2: HIGHLIGHTS 3~6 + INSIGHT BANNER + FOOTER -->
+    <div class="print-page-2">
+      <div class="news-grid news-grid-page2">
+        
+        <!-- Highlight 3 -->
+        <article class="news-card">
+          <div class="card-top">
+            <div class="badge-row">
+              <span class="cat-badge cat-reg" id="hl-cat-3">監管合規 · 保費融資</span>
+              <span class="source-tag"><span id="hl-src-label-3">來源：</span><a href="https://minterellison.com.hk/news/premium-financing-latest-ia-observations-and-practical-tips/" target="_blank">MinterEllison & 保監局 (IA)</a></span>
+            </div>
+            <h2 class="news-title" id="hl-title-3">3. 保費融資佔新造保費升至 36%，保監局與金管局巡查聚焦償付壓力與外幣借貸</h2>
+            <p class="news-summary" id="hl-sum-3">
+              保監局最新觀察指，保費融資佔香港新造保費比重已由 2024 年約 12% 躍升至 2026 上半年的 36%。保監局正與金管局進行第三次聯合巡查，重點檢視銀行及中介人是否全面計入客戶的按揭負債、零售化風險及境外低息外幣（如瑞郎）借貸的利率匯率雙重倒掛。
+            </p>
+          </div>
+          <div class="advisory-box">
+            <strong id="hl-adv-title-3">💡 Zillion Wealth 理財顧問啟示</strong>
+            <span id="hl-adv-desc-3">協助客戶評估保費融資時，必須連同物業按揭及流動性儲備進行全面壓力測試，確保借貸成本上升或匯率波動下仍能穩健持有。</span>
+          </div>
+        </article>
+
+        <!-- Highlight 4 -->
+        <article class="news-card">
+          <div class="card-top">
+            <div class="badge-row">
+              <span class="cat-badge cat-market" id="hl-cat-4">利率環境 · 聯儲動向</span>
+              <span class="source-tag"><span id="hl-src-label-4">來源：</span><a href="https://www.morningstar.com/news/dow-jones/202611181679/treasury-yields-trade-mixed-ahead-of-fed-minutes-eurozone-bond-yields-fall-update" target="_blank">Morningstar / Dow Jones</a></span>
+            </div>
+            <h2 class="news-title" id="hl-title-4">4. 聯儲紀錄放鷹暗示再加息、理事稱 12 月或加半厘，美債息企穩 5% 撐高美元紅利</h2>
+            <p class="news-summary" id="hl-sum-4">
+              聯儲局 10 月會議紀錄顯示「幾乎所有官員」認為需進一步加息，理事 Waller 更稱 12 月會議或需加息 50 基點。受此影響，10 年期美債息穩守 5.09% 高位，帶動美元分紅儲蓄及年金產品的長線內部回報率（IRR）持續具備強大競爭力。
+            </p>
+          </div>
+          <div class="advisory-box">
+            <strong id="hl-adv-title-4">💡 Zillion Wealth 理財顧問啟示</strong>
+            <span id="hl-adv-desc-4">趁 10 年期美債息維持 5% 以上歷史高位窗口期，配置具備保證回報與多元貨幣轉換的美元分紅保單，能替客戶跨週期鎖定高息複利。</span>
+          </div>
+        </article>
+
+        <!-- Highlight 5 -->
+        <article class="news-card">
+          <div class="card-top">
+            <div class="badge-row">
+              <span class="cat-badge cat-market" id="hl-cat-5">貴金屬與避險 · 資產配置</span>
+              <span class="source-tag"><span id="hl-src-label-5">來源：</span><a href="https://fxpro.news/market-overview/silver-is-sinking/" target="_blank">FxPro & Trading Economics</a></span>
+            </div>
+            <h2 class="news-title" id="hl-title-5">5. 強美元壓抑金價跌至 $3,767、銀價 $45.08，惟黃金 ETF 年內淨流入仍創歷來第三高</h2>
+            <p class="news-summary" id="hl-sum-5">
+              受美匯指數逼近 19 個月高位及 5% 美債息拖累，現貨黃金下試 14 個月低位 $3,767.56/盎司，白銀同步回落至 $45.08/盎司。然而最新數據顯示，1 至 10 月全球黃金 ETF 持倉仍大增 246 噸，創有紀錄以來第三大增幅，反映機構對長線避險與去美元化配置並未動搖。
+            </p>
+          </div>
+          <div class="advisory-box">
+            <strong id="hl-adv-title-5">💡 Zillion Wealth 理財顧問啟示</strong>
+            <span id="hl-adv-desc-5">短期價格波動不改機構分散風險的大方向；建議客戶避免單一重倉高波動商品，應以確定性現金流保單作核心底座，再適量分散配置。</span>
+          </div>
+        </article>
+
+        <!-- Highlight 6 -->
+        <article class="news-card">
+          <div class="card-top">
+            <div class="badge-row">
+              <span class="cat-badge cat-market" id="hl-cat-6">市場情緒 · 啞鈴策略</span>
+              <span class="source-tag"><span id="hl-src-label-6">來源：</span><a href="https://fortune.com/2026/11/18/nvidia-q3-2027-investigation-jensen-huang-largest-annual-profit/" target="_blank">Fortune & CNN Markets</a></span>
+            </div>
+            <h2 class="news-title" id="hl-title-6">6. Nvidia 倒跌 2.89%、Anthropic 定價 3 登陸納指，醫保股急挫拖累道指跌 561 點</h2>
+            <p class="news-summary" id="hl-sum-6">
+              隔夜美股走勢分化：Nvidia 業績雖勝預期卻高開低走跌 2.89%，聯合健康（UNH）等醫保股因 Medicare 擴大審計急挫，拖累道指跌 561 點、標普五連跌；AI 巨頭 Anthropic IPO 定價每股 3（估值約 1.4 萬億美元）今夜掛牌，科技波動仍大。
+            </p>
+          </div>
+          <div class="advisory-box">
+            <strong id="hl-adv-title-6">💡 Zillion Wealth 理財顧問啟示</strong>
+            <span id="hl-adv-desc-6">當 VIX 高於 24 時正是與客戶檢視「啞鈴型配置」的最佳契機：一端保留醫療危疾與分紅儲蓄防禦底盤，另一端才穩健捕捉 AI 科技長線紅利。</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Daily Wealth Insight Banner -->
+      <section class="insight-banner">
+        <span class="insight-badge" id="text-banner-badge">⚡ Zillion Wealth 今日智策 (Advisor Daily Brief)</span>
+        <h3 class="insight-title" id="text-banner-title">「VIX 升破 24 與美債息企穩 5%，確定性保障是波動市最強護城河。」</h3>
+        <p class="insight-desc" id="text-banner-desc">
+          隔夜美股急挫與金價大幅回調，提醒客戶單靠高波動資產難以穩守財富。今天與客戶交流時，建議重點聚焦於：<strong>① 善用「大額保單 + 指定受益人分期給付」取代高門檻傳統信託進行家族傳承</strong>；<strong>② 為持有保費融資的客戶進行全面加息及按揭負債壓力測試</strong>；<strong>③ 把握 5% 美債息高位窗口，配置美元長線儲蓄與年金鎖定未來確定性現金流</strong>。
+        </p>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-brand" id="text-footer-brand">
+          Zillion Wealth · 財富與保障管理團隊
+        </div>
+        <div id="text-footer-credentials">
+          專業團隊：Certified Trust Planner (CTP) 認可信託策劃師 · 百萬圓桌 COT 終身會員
+        </div>
+        <div class="footer-disclaimer" id="text-footer-disclaimer">
+          【免責聲明】本晨訊由 Zillion Wealth 整理自公開且具公信力之財經媒體（Fortune、Morningstar、南華早報、香港保監局、香港金管局及中原地產等），僅供理財顧問團隊專業研討及內部資訊參考之用，並不構成任何形式之金融投資建議、要約或招攬。各項指數報價以相關交易所及機構官方公告為準。
+        </div>
+      </footer>
+    </div>
+
+  </div>
+
+  <script>
+    let currentLang = 'tc';
+    let isMoreIndicesOpen = false;
+
+    function toggleMoreIndices() {
+      isMoreIndicesOpen = !isMoreIndicesOpen;
+      const row = document.getElementById('more-indices-row');
+      const btn = document.getElementById('btn-toggle-7-12');
+      
+      if (isMoreIndicesOpen) {
+        row.classList.remove('indices-row-hidden');
+        row.classList.add('indices-row-visible');
+        btn.classList.add('expanded');
+      } else {
+        row.classList.remove('indices-row-visible');
+        row.classList.add('indices-row-hidden');
+        btn.classList.remove('expanded');
+      }
+      updateToggleBtnText();
+    }
+
+    function updateToggleBtnText() {
+      const btnTextEl = document.getElementById('text-toggle-btn');
+      if (currentLang === 'en') {
+        btnTextEl.textContent = isMoreIndicesOpen ? '− Hide 7-12 Indices' : '+ Show 7-12 Indices (EU/Asia/2Y)';
+      } else if (currentLang === 'sc') {
+        btnTextEl.textContent = isMoreIndicesOpen ? '− 收起 7-12 欧亚债息指数' : '+ 展开 7-12 欧亚债息指数';
+      } else {
+        btnTextEl.textContent = isMoreIndicesOpen ? '− 收起 7-12 歐亞債息指數' : '+ 展開 7-12 歐亞債息指數';
+      }
+    }
+
+    const i18nData = {
+      tc: {
+        motto: '"Enriching the life of the people we touch" — Zillion Wealth 專業財富與保障管理團隊',
+        topBadge: '每日晨間 09:00 AM HKT 準時發送',
+        btnPrint: '🖨️ 列印 / 另存 PDF',
+        btnShare: '🔗 複製分享連結',
+        headerTag: '每日晨訊',
+        headerSubtitle: '保險 · 理財 · 環球市場 · 宏觀資產配置 6 大核心焦點',
+        headerDate: '2026 年 11 月 19 日 星期四',
+        headerTime: '⏰ 09:00 AM HKT 發行 · 隔夜權威結算基準',
+        headerAuthor: '主編：Fasun Wong | Certified Trust Planner (認可信託策劃師)',
+        sec1Title: '環球股票市場指數 及美債息 & 波動率 (Stock Market Index, Yields & VIX)',
+        sec1Tag: '隔夜官方收市結算價',
+        sec2Title: '大宗商品 · 加密貨幣 · 樓市指數 (Commodities, Crypto & Property Index)',
+        sec2Tag: '晨間最新報價',
+        sec3Title: '今日保險、理財與投資 6 大新聞精粹 (Top 6 Intelligence Highlights)',
+        
+        idxHsiName: '香港恒生指數',
+        idxHsiNote: '亞太科技股受美股拖累',
+        idxSpName: '標普 500 指數',
+        idxSpNote: '連跌五日 · 創6月以來最長跌浪',
+        idxDjiName: '道瓊斯工業指數',
+        idxDjiNote: '跌 561.25 點 · 醫保股拖累',
+        idxNasName: '納斯達克綜合指數',
+        idxNasNote: 'Anthropic IPO 前夕逆市微升',
+        idxVixName: 'CBOE 恐慌指數',
+        idxVixNote: '高於 24 警戒線 · 市場波動',
+        idxUs10Name: '美國 10 年期債息',
+        idxUs10Note: '企穩 5% 上方 · 靜待聯儲紀錄',
+        idxEuName: '歐洲斯托克 50',
+        idxEuNote: '歐股連跌四日 · 風險胃納轉弱',
+        idxNikName: '日本日經 225',
+        idxNikNote: '晶片股領軍微升',
+        idxKorName: '韓國綜合指數',
+        idxKorNote: '重返 5,000 點大關',
+        idxTwnName: '台灣加權指數',
+        idxTwnNote: 'AI 供應鏈震盪整固',
+        idxCsiName: '滬深 300 指數',
+        idxCsiNote: '國產 AI 概念股造好',
+        idxUs2Name: '美國 2 年期債息',
+        idxUs2Note: '反映加息預期升溫',
+        
+        idxGoldName: '國際現貨黃金',
+        idxGoldNote: '強美元壓抑 · 14個月低位',
+        idxSilName: '國際現貨白銀',
+        idxSilNote: '貴金屬同步回調',
+        idxOilName: '布蘭特原油期貨',
+        idxOilNote: '美國庫存上升壓低油價',
+        idxBtcName: '比特幣加密貨幣',
+        idxBtcNote: '於 65,000 關口下方整固',
+        idxCclName: '中原城市領先指數',
+        idxCclNote: '11月13日公布 · 連跌5周',
+
+        hlCat1: '財富傳承 · 保單新趨勢',
+        hlTitle1: '1. 港險企加速拓展財富管理版圖：大額保單成比傳統信託更靈活之遺產規劃方案',
+        hlSum1: '《南華早報》最新報道指出，隨著巨額人壽保單屢破紀錄，香港保險公司正全面擴大高淨值財富管理業務。多位業界高層表示，在合適的家族傳承個案中，大額分紅壽險比傳統設立信託具備更高靈活性與更低維持成本，成為跨代資產分配核心工具。',
+        hlAdvDesc1: '面對中產至高淨值客戶，可強調「保單傳承 + 類信託指定受益人分期給付」功能，既無需支付高昂信託年費，又能精準鎖定跨代財富分配。',
+
+        hlCat2: '家族辦公室 · 稅務優惠',
+        hlTitle2: '2. 香港單一家族辦公室突破 3,380 間，稅務寬免擴展至實物黃金與數字資產',
+        hlSum2: '投資推廣署最新研究顯示，香港單一家族辦公室（SFO）已突破 3,380 間，每年為本地經濟貢獻約 126 億港元。2026–27 年度財政預算案更將 0% 利得稅豁免資格擴展至實物黃金、數字資產及私人信貸，進一步吸引環球家族把亞太總部及保單架構落戶香港。',
+        hlAdvDesc2: '家族辦公室數量激增帶動跨境高淨值人士對「資本保全 + 醫療保障」的雙重需求，顧問可結合稅務優勢切入全面家庭保障檢視。',
+
+        hlCat3: '監管合規 · 保費融資',
+        hlTitle3: '3. 保費融資佔新造保費升至 36%，保監局與金管局巡查聚焦償付壓力與外幣借貸',
+        hlSum3: '保監局最新觀察指，保費融資佔香港新造保費比重已由 2024 年約 12% 躍升至 2026 上半年的 36%。保監局正與金管局進行第三次聯合巡查，重點檢視銀行及中介人是否全面計入客戶的按揭負債、零售化風險及境外低息外幣（如瑞郎）借貸的利率匯率雙重倒掛。',
+        hlAdvDesc3: '協助客戶評估保費融資時，必須連同物業按揭及流動性儲備進行全面壓力測試，確保借貸成本上升或匯率波動下仍能穩健持有。',
+
+        hlCat4: '利率環境 · 聯儲動向',
+        hlTitle4: '4. 聯儲紀錄放鷹暗示再加息、理事稱 12 月或加半厘，美債息企穩 5% 撐高美元紅利',
+        hlSum4: '聯儲局 10 月會議紀錄顯示「幾乎所有官員」認為需進一步加息，理事 Waller 更稱 12 月會議或需加息 50 基點。受此影響，10 年期美債息穩守 5.09% 高位，帶動美元分紅儲蓄及年金產品的長線內部回報率（IRR）持續具備強大競爭力。',
+        hlAdvDesc4: '趁 10 年期美債息維持 5% 以上歷史高位窗口期，配置具備保證回報與多元貨幣轉換的美元分紅保單，能替客戶跨週期鎖定高息複利。',
+
+        hlCat5: '貴金屬與避險 · 資產配置',
+        hlTitle5: '5. 強美元壓抑金價跌至 $3,767、銀價 $45.08，惟黃金 ETF 年內淨流入仍創歷來第三高',
+        hlSum5: '受美匯指數逼近 19 個月高位及 5% 美債息拖累，現貨黃金下試 14 個月低位 $3,767.56/盎司，白銀同步回落至 $45.08/盎司。然而最新數據顯示，1 至 10 月全球黃金 ETF 持倉仍大增 246 噸，創有紀錄以來第三大增幅，反映機構對長線避險與去美元化配置並未動搖。',
+        hlAdvDesc5: '短期價格波動不改機構分散風險的大方向；建議客戶避免單一重倉高波動商品，應以確定性現金流保單作核心底座，再適量分散配置。',
+
+        hlCat6: '市場情緒 · 啞鈴策略',
+        hlTitle6: '6. Nvidia 倒跌 2.89%、Anthropic 定價 3 登陸納指，醫保股急挫拖累道指跌 561 點',
+        hlSum6: '隔夜美股走勢分化：Nvidia 業績雖勝預期卻高開低走跌 2.89%，聯合健康（UNH）等醫保股因 Medicare 擴大審計急挫，拖累道指跌 561 點、標普五連跌；AI 巨頭 Anthropic IPO 定價每股 3（估值約 1.4 萬億美元）今夜掛牌，科技波動仍大。',
+        hlAdvDesc6: '當 VIX 高於 24 時正是與客戶檢視「啞鈴型配置」的最佳契機：一端保留醫療危疾與分紅儲蓄防禦底盤，另一端才穩健捕捉 AI 科技長線紅利。',
+
+        bannerBadge: '⚡ Zillion Wealth 今日智策 (Advisor Daily Brief)',
+        bannerTitle: '「VIX 升破 24 與美債息企穩 5%，確定性保障是波動市最強護城河。」',
+        bannerDesc: '隔夜美股急挫與金價大幅回調，提醒客戶單靠高波動資產難以穩守財富。今天與客戶交流時，建議重點聚焦於：<strong>① 善用「大額保單 + 指定受益人分期給付」取代高門檻傳統信託進行家族傳承</strong>；<strong>② 為持有保費融資的客戶進行全面加息及按揭負債壓力測試</strong>；<strong>③ 把握 5% 美債息高位窗口，配置美元長線儲蓄與年金鎖定未來確定性現金流</strong>。',
+
+        footerBrand: 'Zillion Wealth · 財富與保障管理團隊',
+        footerCredentials: '專業團隊：Certified Trust Planner (CTP) 認可信託策劃師 · 百萬圓桌 COT 終身會員',
+        footerDisclaimer: '【免責聲明】本晨訊由 Zillion Wealth 整理自公開且具公信力之財經媒體（Fortune、Morningstar、南華早報、香港保監局、香港金管局及中原地產等），僅供理財顧問團隊專業研討及內部資訊參考之用，並不構成任何形式之金融投資建議、要約或招攬。各項指數報價以相關交易所及機構官方公告為準。'
+      },
+
+      sc: {
+        motto: '"Enriching the life of the people we touch" — Zillion Wealth 专业财富与保障管理团队',
+        topBadge: '每日晨间 09:00 AM HKT 准时发送',
+        btnPrint: '🖨️ 打印 / 另存 PDF',
+        btnShare: '🔗 复制分享链接',
+        headerTag: '每日晨讯',
+        headerSubtitle: '保险 · 理财 · 环球市场 · 宏观资产配置 6 大核心焦点',
+        headerDate: '2026 年 11 月 19 日 星期四',
+        headerTime: '⏰ 09:00 AM HKT 发行 · 隔夜权威结算基准',
+        headerAuthor: '主编：Fasun Wong | Certified Trust Planner (认可信托策划师)',
+        sec1Title: '环球股票市场指数 及美债息 & 波动率 (Stock Market Index, Yields & VIX)',
+        sec1Tag: '隔夜官方收市结算价',
+        sec2Title: '大宗商品 · 加密货币 · 楼市指数 (Commodities, Crypto & Property Index)',
+        sec2Tag: '晨间最新报价',
+        sec3Title: '今日保险、理财与投资 6 大新闻精粹 (Top 6 Intelligence Highlights)',
+        
+        idxHsiName: '香港恒生指数',
+        idxHsiNote: '亚太科技股受美股拖累',
+        idxSpName: '标普 500 指数',
+        idxSpNote: '创近四个月收盘低位',
+        idxDjiName: '道琼斯工业指数',
+        idxDjiNote: '跌 561.25 点 · 医保股拖累',
+        idxNasName: '纳斯达克综合指数',
+        idxNasNote: 'Anthropic IPO 前夕逆市微升',
+        idxVixName: 'CBOE 恐慌指数',
+        idxVixNote: '高于 24 警戒线 · 市场波动',
+        idxUs10Name: '美国 10 年期债息',
+        idxUs10Note: '企稳 5% 上方 · 静待联储纪要',
+        idxEuName: '欧洲斯托克 50',
+        idxEuNote: '欧股连跌四日 · 风险偏好转弱',
+        idxNikName: '日本日经 225',
+        idxNikNote: '芯片股领军微升',
+        idxKorName: '韩国综合指数',
+        idxKorNote: '重返 5,000 点大关',
+        idxTwnName: '台湾加权指数',
+        idxTwnNote: 'AI 供应链震荡整固',
+        idxCsiName: '沪深 300 指数',
+        idxCsiNote: '国产 AI 概念股走强',
+        idxUs2Name: '美国 2 年期债息',
+        idxUs2Note: '反映加息预期升温',
+        
+        idxGoldName: '国际现货黄金',
+        idxGoldNote: '强美元压抑 · 14个月低位',
+        idxSilName: '国际现货白银',
+        idxSilNote: '贵金属同步回调',
+        idxOilName: '布伦特原油期货',
+        idxOilNote: '美国库存上升压低油价',
+        idxBtcName: '比特币加密货币',
+        idxBtcNote: '于 65,000 关口下方整固',
+        idxCclName: '中原城市领先指数',
+        idxCclNote: '11月13日公布 · 连跌5周',
+
+        hlCat1: '财富传承 · 保单新趋势',
+        hlTitle1: '1. 港险企加速拓展财富管理版图：大额保单成比传统信托更灵活之遗产规划方案',
+        hlSum1: '《南华早报》最新报道指出，随着巨额人寿保单屡破纪录，香港保险公司正全面扩大高净值财富管理业务。多位业界高层表示，在合适的家族传承个案中，大额分红寿险比传统设立信托具备更高灵活性与更低维持成本，成为跨代资产分配核心工具。',
+        hlAdvDesc1: '面对中产至高净值客户，可强调“保单传承 + 类信托指定受益人分期给付”功能，既无需支付高昂信托年费，又能精准锁定跨代财富分配。',
+
+        hlCat2: '家族办公室 · 税务优惠',
+        hlTitle2: '2. 香港单一家族办公室突破 3,380 间，税务宽免扩展至实物黄金与数字资产',
+        hlSum2: '投资推广署最新研究显示，香港单一家族办公室（SFO）已突破 3,380 间，每年为本地经济贡献约 126 亿港元。2026–27 年度财政预算案更将 0% 利得税豁免资格扩展至实物黄金、数字资产及私人信贷，进一步吸引环球家族把亚太总部及保单架构落户香港。',
+        hlAdvDesc2: '家族办公室数量激增带动跨境高净值人士对“资本保全 + 医疗保障”的双重需求，顾问可结合税务优势切入全面家庭保障检视。',
+
+        hlCat3: '监管合规 · 保费融资',
+        hlTitle3: '3. 保费融资占新造保费升至 36%，保监局与金管局巡查聚焦偿付压力与外币借贷',
+        hlSum3: '保监局最新观察指，保费融资占香港新造保费比重已由 2024 年约 12% 跃升至 2026 上半年的 36%。保监局正与金管局进行第三次联合巡查，重点检视银行及中介人是否全面计入客户的按揭负债、零售化风险及境外低息外币（如瑞郎）借贷的利率汇率双重倒挂。',
+        hlAdvDesc3: '协助客户评估保费融资时，必须连同物业按揭及流动性储备进行全面压力测试，确保借贷成本上升或汇率波动下仍能稳健持有。',
+
+        hlCat4: '利率环境 · 联储动向',
+        hlTitle4: '4. 联储纪要放鹰暗示再加息、理事称 12 月或加半厘，美债息企稳 5% 撑高美元红利',
+        hlSum4: '美联储 10 月会议纪要显示“几乎所有官员”认为需进一步加息，理事 Waller 更称 12 月会议或需加息 50 基点。受此影响，10 年期美债息稳守 5.09% 高位，带动美元分红储蓄及年金产品的长线内部回报率（IRR）持续具备强大竞争力。',
+        hlAdvDesc4: '趁 10 年期美债息维持 5% 以上历史高位窗口期，配置具备保证回报与多元货币转换的美元分红保单，能替客户跨周期锁定高息复利。',
+
+        hlCat5: '贵金属与避险 · 资产配置',
+        hlTitle5: '5. 强美元压抑金价跌至 $3,767、银价 $45.08，惟黄金 ETF 年内净流入仍创历来第三高',
+        hlSum5: '受美元指数逼近 19 个月高位及 5% 美债息拖累，现货黄金下试 14 个月低位 $3,767.56/盎司，白银同步回落至 $45.08/盎司。然而最新数据显示，1 至 10 月全球黄金 ETF 持仓仍大增 246 吨，创有记录以来第三大增幅，反映机构对长线避险与去美元化配置并未动摇。',
+        hlAdvDesc5: '短期价格波动不改机构分散风险的大方向；建议客户避免单一重仓高波动商品，应以确定性现金流保单作核心底座，再适量分散配置。',
+
+        hlCat6: '市场情绪 · 哑铃策略',
+        hlTitle6: '6. Nvidia 倒跌 2.89%、Anthropic 定价 3 登陆纳指，医保股急挫拖累道指跌 561 点',
+        hlSum6: '虽然隔夜道指重挫 848 点、标普 500 创近四个月低位，但受 Nvidia 第三季业绩胜预期并上调全年指引带动，日经（+0.28%）、韩股（+1.99%）及沪深 300（+0.18%）率先止跌回升。不过 VIX 恐慌指数仍高企 24.57，市场短期波动仍然剧烈。',
+        hlAdvDesc6: '当 VIX 高于 24 时正是与客户检视“哑铃型配置”的最佳契机：一端保留医疗重疾与分红储蓄防御底盘，另一端才稳健捕捉 AI 科技长线红利。',
+
+        bannerBadge: '⚡ Zillion Wealth 今日智策 (Advisor Daily Brief)',
+        bannerTitle: '“VIX 升破 24 与美债息企稳 5%，确定性保障是波动市最强护城河。”',
+        bannerDesc: '隔夜美股急挫与金价大幅回调，提醒客户单靠高波动资产难以稳守财富。今天与客户交流时，建议重点聚焦于：<strong>① 善用“大额保单 + 指定受益人分期给付”取代高门槛传统信托进行家族传承</strong>；<strong>② 为持有保费融资的客户进行全面加息及按揭负债压力测试</strong>；<strong>③ 把握 5% 美债息高位窗口，配置美元长线储蓄与年金锁定未来确定性现金流</strong>。',
+
+        footerBrand: 'Zillion Wealth · 财富与保障管理团队',
+        footerCredentials: '专业团队：Certified Trust Planner (CTP) 认可信托策划师 · 百万圆桌 COT 终身会员',
+        footerDisclaimer: '【免责声明】本晨讯由 Zillion Wealth 整理自公开且具公信力之财经媒体（Fortune、Morningstar、南华早报、香港保监局、香港金管局及中原地产等），仅供理财顾问团队专业研讨及内部资讯参考之用，并不构成任何形式之金融投资建议、要约或招揽。各项指数报价以相关交易所及机构官方公告为准。'
+      },
+
+      en: {
+        motto: '"Enriching the life of the people we touch" — Zillion Wealth Wealth & Protection Advisory Team',
+        topBadge: 'Daily Dispatch at 09:00 AM HKT Promptly',
+        btnPrint: '🖨️ Print / Save as PDF',
+        btnShare: '🔗 Copy Share Link',
+        headerTag: 'Daily Brief',
+        headerSubtitle: 'Insurance · Wealth Management · Global Markets · Asset Allocation 6 Core Highlights',
+        headerDate: 'Thursday, November 19, 2026',
+        headerTime: '⏰ 09:00 AM HKT · Official Overnight Benchmark',
+        headerAuthor: 'Editor: Fasun Wong | Certified Trust Planner (CTP)',
+        sec1Title: 'Global Stock Market Indices, US Treasury Yields & Volatility',
+        sec1Tag: 'Overnight Official Close',
+        sec2Title: 'Commodities, Cryptocurrencies & Real Estate Index',
+        sec2Tag: 'Morning Spot Quotes',
+        sec3Title: 'Top 6 Intelligence Highlights: Insurance, Wealth & Investment',
+        
+        idxHsiName: 'Hang Seng Index',
+        idxHsiNote: 'Tech drag from Wall Street',
+        idxSpName: 'S&P 500 Index',
+        idxSpNote: '5th straight loss · Longest since June',
+        idxDjiName: 'Dow Jones Industrial',
+        idxDjiNote: 'Down 561.25 pts · Health insurers drag',
+        idxNasName: 'Nasdaq Composite',
+        idxNasNote: 'Edges higher pre-Anthropic IPO',
+        idxVixName: 'CBOE Volatility (VIX)',
+        idxVixNote: 'Above 24 alert · Elevated vol',
+        idxUs10Name: 'US 10-Yr Treasury',
+        idxUs10Note: 'Holds above 5% ahead of Fed',
+        idxEuName: 'Euro Stoxx 50',
+        idxEuNote: '4th straight decline in Europe',
+        idxNikName: 'Nikkei 225',
+        idxNikNote: 'Chipmakers lift Japan higher',
+        idxKorName: 'KOSPI Index',
+        idxKorNote: 'Reclaims 5,000 milestone',
+        idxTwnName: 'Taiwan TAIEX',
+        idxTwnNote: 'AI supply chain consolidation',
+        idxCsiName: 'CSI 300 Index',
+        idxCsiNote: 'Domestic AI stocks advance',
+        idxUs2Name: 'US 2-Yr Treasury',
+        idxUs2Note: 'Reflects rate hike expectations',
+        
+        idxGoldName: 'Spot Gold (XAU)',
+        idxGoldNote: 'Strong USD · 14-month low',
+        idxSilName: 'Spot Silver (XAG)',
+        idxSilNote: 'Precious metals retreat',
+        idxOilName: 'Brent Crude Oil',
+        idxOilNote: 'Rising US inventories weigh',
+        idxBtcName: 'Bitcoin (BTC)',
+        idxBtcNote: 'Consolidating below $65k',
+        idxCclName: 'Centaline CCL Property',
+        idxCclNote: 'Nov 13 release · 5th weekly dip',
+
+        hlCat1: 'Legacy Planning · Policy Trend',
+        hlTitle1: '1. HK Insurers Expand Wealth Management Push as Large Policies Offer Flexible Estate Planning',
+        hlSum1: 'South China Morning Post reports that following record-breaking life policies, Hong Kong insurers are accelerating high-net-worth wealth management expansion. Industry executives note that in suitable cases, large participating policies provide a more flexible, cost-efficient estate planning alternative than traditional trusts.',
+        hlAdvDesc1: 'Highlight "policy inheritance + trust-like installment payouts to designated beneficiaries" for affluent families—delivering precision legacy distribution without heavy annual trust administration fees.',
+
+        hlCat2: 'Family Offices · Tax Breaks',
+        hlTitle2: '2. Hong Kong Single Family Offices Top 3,380 as Tax Exemptions Expand to Gold & Digital Assets',
+        hlSum2: 'InvestHK research shows Hong Kong now hosts over 3,380 Single Family Offices, contributing HK$12.6B annually. The 2026-27 Budget expanded 0% profits tax exemptions to physical gold, digital assets, and private credit, further cementing HK as Asia-Pacific\'s multi-generational wealth hub.',
+        hlAdvDesc2: 'Growing SFO adoption drives cross-border HNW demand for both capital preservation and comprehensive medical protection—an ideal opening for holistic family portfolio reviews.',
+
+        hlCat3: 'Regulatory Watch · Financing',
+        hlTitle3: '3. Premium Financing Hits 36% of New Business; IA & HKMA Inspection Targets Leverage & FX Loans',
+        hlSum3: 'The Insurance Authority notes premium financing rose from 12% in 2024 to 36% of new premiums in H1 2026. The IA and HKMA\'s third joint inspection focuses on whether banks and intermediaries factor in mortgage liabilities, retailization risks, and offshore low-rate FX loans (e.g., CHF) carrying dual rate/FX risks.',
+        hlAdvDesc3: 'Always conduct full stress testing—accounting for existing mortgages and liquidity buffers—when evaluating premium financing so clients remain resilient against rate and FX swings.',
+
+        hlCat4: 'Interest Rates · Fed Outlook',
+        hlTitle4: '4. Hawkish Fed Minutes Signal More Hikes; Waller Floats 50 bps Move as 10Y Yield Holds 5.09%',
+        hlSum4: 'With markets awaiting FOMC minutes, the 10-year Treasury yield holds at 5.09% and the 2-year at 4.80% as traders price in tighter policy risks into 2027. High yields bolster insurers\' fixed-income portfolios, keeping long-term compounded IRRs on USD participating and annuity plans highly compelling.',
+        hlAdvDesc4: 'With 10-year yields above 5%, now is an opportune window to lock in guaranteed compounding and multi-currency flexibility via USD participating savings plans.',
+
+        hlCat5: 'Precious Metals · Diversification',
+        hlTitle5: '5. Strong USD Pushes Gold to $3,767 & Silver to $45.08, Yet Gold ETFs Post 3rd-Largest Inflow',
+        hlSum5: 'A 19-month high in the US Dollar and 5%+ yields pushed spot gold to a 14-month low of $3,767.56/oz and silver to $45.08/oz. Still, global gold ETF holdings rose 246 tonnes in Jan–Oct—the third-largest inflow on record—showing institutional hedging demand remains intact.',
+        hlAdvDesc5: 'Short-term commodity swings underscore why clients shouldn\'t over-concentrate in volatile assets—anchor portfolios with deterministic cash-flow policies first.',
+
+        hlCat6: 'Market Sentiment · Barbell Strategy',
+        hlTitle6: '6. Nvidia Slides 2.89% & Anthropic Prices IPO at 3 as Health Insurers Drag Dow Down 561 Pts',
+        hlSum6: 'Although the Dow dropped 848 points and the S&P 500 hit a near 4-month low overnight, Nvidia\'s Q3 beat and raised guidance lifted Nikkei (+0.28%), KOSPI (+1.99%), and CSI 300 (+0.18%). With VIX still elevated at 24.57, near-term market swings remain sharp.',
+        hlAdvDesc6: 'When VIX exceeds 24, review the "Barbell Strategy" with clients: secure medical, critical illness, and participating savings on one end before capturing long-term AI growth on the other.',
+
+        bannerBadge: '⚡ Zillion Wealth Daily Brief (Strategic Insight)',
+        bannerTitle: '"With VIX above 24 and 10Y yields at 5%, deterministic protection is your strongest moat."',
+        bannerDesc: 'Overnight equity sell-offs and metal pullbacks show volatile assets alone can\'t safeguard wealth. Today\'s advisory focus: <strong>① Use large life policies with installment payouts for flexible estate planning</strong>; <strong>② Stress-test premium financing clients against mortgage debt and rate hikes</strong>; <strong>③ Capture 5%+ USD yields to lock in long-term deterministic cash flows</strong>.',
+
+        footerBrand: 'Zillion Wealth · Wealth & Protection Advisory Team',
+        footerCredentials: 'Professional Team: Certified Trust Planner (CTP) · Million Dollar Round Table COT Life Member',
+        footerDisclaimer: '[Disclaimer] This morning brief is curated by Zillion Wealth from reputable public financial sources (Fortune, Morningstar, SCMP, HK Insurance Authority, HKMA, Centaline, etc.) for internal advisory discussion only. It does not constitute investment advice, offer, or solicitation. All quotes subject to official exchange announcements.'
+      }
+    };
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      const data = i18nData[lang];
+      if (!data) return;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-' + lang);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.getElementById('text-motto').textContent = data.motto;
+      document.getElementById('text-top-badge').textContent = data.topBadge;
+      document.getElementById('text-btn-print').textContent = data.btnPrint;
+      document.getElementById('text-btn-share').textContent = data.btnShare;
+      document.getElementById('text-header-tag').textContent = data.headerTag;
+      document.getElementById('text-header-subtitle').textContent = data.headerSubtitle;
+      document.getElementById('text-header-date').textContent = data.headerDate;
+      document.getElementById('text-header-time').textContent = data.headerTime;
+      document.getElementById('text-header-author').textContent = data.headerAuthor;
+
+      document.getElementById('text-sec1-title').textContent = data.sec1Title;
+      document.getElementById('text-sec1-tag').textContent = data.sec1Tag;
+      document.getElementById('text-sec2-title').textContent = data.sec2Title;
+      document.getElementById('text-sec2-tag').textContent = data.sec2Tag;
+      document.getElementById('text-sec3-title').textContent = data.sec3Title;
+      updateToggleBtnText();
+
+      document.getElementById('idx-hsi-name').textContent = data.idxHsiName;
+      document.getElementById('idx-hsi-note').textContent = data.idxHsiNote;
+      document.getElementById('idx-sp-name').textContent = data.idxSpName;
+      document.getElementById('idx-sp-note').textContent = data.idxSpNote;
+      document.getElementById('idx-dji-name').textContent = data.idxDjiName;
+      document.getElementById('idx-dji-note').textContent = data.idxDjiNote;
+      document.getElementById('idx-nas-name').textContent = data.idxNasName;
+      document.getElementById('idx-nas-note').textContent = data.idxNasNote;
+      document.getElementById('idx-eu-name').textContent = data.idxEuName;
+      document.getElementById('idx-eu-note').textContent = data.idxEuNote;
+      document.getElementById('idx-nik-name').textContent = data.idxNikName;
+      document.getElementById('idx-nik-note').textContent = data.idxNikNote;
+      document.getElementById('idx-kor-name').textContent = data.idxKorName;
+      document.getElementById('idx-kor-note').textContent = data.idxKorNote;
+      document.getElementById('idx-twn-name').textContent = data.idxTwnName;
+      document.getElementById('idx-twn-note').textContent = data.idxTwnNote;
+      document.getElementById('idx-csi-name').textContent = data.idxCsiName;
+      document.getElementById('idx-csi-note').textContent = data.idxCsiNote;
+      document.getElementById('idx-us10-name').textContent = data.idxUs10Name;
+      document.getElementById('idx-us10-note').textContent = data.idxUs10Note;
+      document.getElementById('idx-us2-name').textContent = data.idxUs2Name;
+      document.getElementById('idx-us2-note').textContent = data.idxUs2Note;
+      document.getElementById('idx-vix-name').textContent = data.idxVixName;
+      document.getElementById('idx-vix-note').textContent = data.idxVixNote;
+
+      document.getElementById('idx-gold-name').textContent = data.idxGoldName;
+      document.getElementById('idx-gold-note').textContent = data.idxGoldNote;
+      document.getElementById('idx-sil-name').textContent = data.idxSilName;
+      document.getElementById('idx-sil-note').textContent = data.idxSilNote;
+      document.getElementById('idx-oil-name').textContent = data.idxOilName;
+      document.getElementById('idx-oil-note').textContent = data.idxOilNote;
+      document.getElementById('idx-btc-name').textContent = data.idxBtcName;
+      document.getElementById('idx-btc-note').textContent = data.idxBtcNote;
+      document.getElementById('idx-ccl-name').textContent = data.idxCclName;
+      document.getElementById('idx-ccl-note').textContent = data.idxCclNote;
+
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById('hl-cat-' + i).textContent = data['hlCat' + i];
+        document.getElementById('hl-title-' + i).textContent = data['hlTitle' + i];
+        document.getElementById('hl-sum-' + i).textContent = data['hlSum' + i];
+        document.getElementById('hl-adv-desc-' + i).textContent = data['hlAdvDesc' + i];
+        document.getElementById('hl-src-label-' + i).textContent = lang === 'en' ? 'Source: ' : (lang === 'sc' ? '来源：' : '來源：');
+        document.getElementById('hl-adv-title-' + i).textContent = lang === 'en' ? '💡 Zillion Wealth Advisory Impact' : (lang === 'sc' ? '💡 Zillion Wealth 理财顾问启示' : '💡 Zillion Wealth 理財顧問啟示');
+      }
+
+      document.getElementById('text-banner-badge').textContent = data.bannerBadge;
+      document.getElementById('text-banner-title').textContent = data.bannerTitle;
+      document.getElementById('text-banner-desc').innerHTML = data.bannerDesc;
+
+      document.getElementById('text-footer-brand').textContent = data.footerBrand;
+      document.getElementById('text-footer-credentials').textContent = data.footerCredentials;
+      document.getElementById('text-footer-disclaimer').textContent = data.footerDisclaimer;
+
+      document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'sc' ? 'zh-Hans' : 'zh-HK');
+    }
+
+    function copyShareLink() {
+      navigator.clipboard.writeText('https://zillionwealth.github.io/news/');
+      const isEn = document.documentElement.lang === 'en';
+      const isSc = document.documentElement.lang === 'zh-Hans';
+      const msg = isEn ? 'Morning brief link copied! Ready to share with clients.' : (isSc ? '晨报链接已复制！可直接发送给客户。' : '晨報連結已複製！可直接發送至客戶 WhatsApp / 顧問群組。');
+      alert(msg);
+    }
+  </script>
+
+</body>
+</html>
