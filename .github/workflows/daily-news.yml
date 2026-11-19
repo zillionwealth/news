@@ -1,0 +1,39 @@
+name: Daily Zillion Wealth News Update
+
+on:
+  schedule:
+    # 00:45 UTC = 08:45 AM HKT (every day, 7 days a week)
+    - cron: '45 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch daily market data and update index.html
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SHARE_URL: https://zillionwealth.github.io/news/
+        run: python update_news.py
+
+      - name: Commit and push updated files
+        run: |
+          git config user.name "zillionwealth-bot"
+          git config user.email "bot@zillionwealth.local"
+          git add index.html daily_summary.json
+          git diff --staged --quiet || git commit -m "chore: daily briefing update $(TZ='Asia/Hong_Kong' date +'%Y-%m-%d')"
+          git push
