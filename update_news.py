@@ -196,7 +196,7 @@ Rules:
 }}
 """
     response = client.models.generate_content(
-        model="gemini-3.0-flash",
+        model="gemini-3.8-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())],
