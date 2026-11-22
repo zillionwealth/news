@@ -1,46 +1,46 @@
 {
-  "date_hkt": "2026-11-21",
-  "display_date_tc": "2026 年 11 月 21 日 星期六",
+  "date_hkt": "2026-11-22",
+  "display_date_tc": "2026 年 11 月 22 日 星期日",
   "share_url": "https://zillionwealth.github.io/news/",
-  "whatsapp_message": "☀️ *Zillion Wealth 每日晨訊* (2026 年 11 月 21 日 星期六)\n\n【Zillion Wealth 晨會快報 2026-11-21】\n1. 海外科技重挫：標普500跌3.7%入修正，納指重挫5.3%抹平年內漲幅，VIX飆升至35.89，流動性擠壓波及黃金（$3,536）及比特幣（$58,807）。\n2. 港股戰略擴容：恒生科指成分股擴容至50隻納入寧德時代及立訊精密；中國財政部在港發行20億美元主權債獲36倍超額認購，離岸通道優勢顯著。\n3. 資產配置建議：二手樓價CCL指數報157.56，大灣區資金加速湧入香港高息地產及離岸儲蓄保單，建議以離岸主權債與高分紅資產鎖定跨週期確定性。\n完整報告：https://zillionwealth.github.io/news/\n\n👉 完整互動報告：https://zillionwealth.github.io/news/",
-  "email_subject": "Zillion Wealth 每日晨訊 | 2026-11-21：全球科技股深度回調，港股迎指數重大調整與流動性重塑",
-  "email_intro": "尊敬的客戶：隔夜海外市場遭遇AI概念股深度重挫，引發跨資產流動性收緊與避險情緒升溫，標普500指數與道指正式步入技術性修正區間。在此極端波動週期中，我們建議高淨值投資者保持防禦定力，聚焦4.8%以上收益的優質主權債、高股息防禦標的及香港多幣種財富保險帶來的確定性現金流。",
+  "whatsapp_message": "☀️ *Zillion Wealth 每日晨訊* (2026 年 11 月 22 日 星期日)\n\n1. 隔夜外圍黑色星期五暴跌，標普500跌3.7%與道指雙雙步入修正區間，納指重挫5.3%抹平年內漲幅，恐慌指數VIX飆升26%至35.89；日台韓股暴挫5%-6%，恒指週五收跌1.89%至22,410點。\n2. 資金狂湧美債避險，10年期收益率急回至4.92%；商品與加密資產遭保證金流動性擠壓，金價跌破3,540美元，比特幣爆倉24億美元後在60,000美元整固。\n3. 富衛破世界紀錄售出3.18億美元保單，印證高淨值家族在市場劇震下正加速將資產遷入香港確定性保險與離岸信託架構。\n完整晨訊詳情請閱：https://zillionwealth.github.io/news/\n\n👉 完整互動報告：https://zillionwealth.github.io/news/",
+  "email_subject": "Zillion Wealth 每日晨訊 | 2026-11-22：全球科技股巨震入修正區間，避險資金聚焦香港大額保單與優質美債",
+  "email_intro": "尊敬的客戶：週末全球權益市場迎來劇烈震盪，美股標普500與道指正式跌入技術性回調區間，資金迅速轉向美債與高確定性防禦資產。面對流動性波動，我們建議您審視資產組合，善用香港頂級多元貨幣儲蓄保單與大額人壽架構鎖定跨代確定回報與資產防護。",
   "highlights": [
     {
-      "title": "1. 隔夜美股遭遇科技黑色星期五：標普500跌3.7%步入修正，納指狂瀉5.3%抹平年內漲幅",
-      "summary": "美股週五爆發全面去槓桿拋售，標普500指數下挫3.7%至6,910.39點，較10月初歷史高位回撤逾10%正式進入技術性修正；納斯達克綜合指數重挫5.28%至22,617.73點，2026年內累計轉跌2.7%。市場對巨額AI基礎設施資本支出的回報周期產生嚴重質疑，Anthropic上市次日回撤8.5%，英偉達受美國監管審查傳聞拖累重挫14%，VIX恐慌指數飆升至35.89。",
-      "source_name": "Associated Press",
-      "source_url": "https://apnews.com/article/financial-markets-stocks-wall-street-sp-500-nasdaq-ai-selloff"
-    },
-    {
-      "title": "2. 恒指季檢出爐：科技指數成分股歷史性擴容至50隻，納入寧德時代及立訊精密等高端硬體巨頭",
-      "summary": "恒生指數公司11月20日公佈第三季指數檢討結果，旗艦恒生科技指數實施重大架構革新，成分股數目由30隻一舉擴容至50隻，新納入寧德時代、立訊精密、ASMPT、優必選、中際旭創等20隻硬體科技龍頭，合計權重約10.4%，並將於12月7日生效。國企指數則納入新興AI模型代表MiniMax與智譜AI（Z.AI），剔除郵儲銀行與申洲國際，顯著加強港股對中國新質生產力的定價權。",
-      "source_name": "Hang Seng Indexes Company",
-      "source_url": "https://www.hsi.com.hk/eng/indexes/whats-new/news"
-    },
-    {
-      "title": "3. 中國財政部在港成功發行20億美元主權債：獲723億美元超額認購達36倍，發行收益率4.821%",
-      "summary": "中國財政部經國務院批准，在香港順利完成20億美元主權債券發行，3年期發行收益率為4.821%。本次發行獲得國際機構投資者高度追捧，總認購金額達723億美元，超額認購倍數達36倍，創歷史同類發行新高。亞洲、歐洲與中東、美洲投資者分別佔比52%、34%及14%，主權基金與資管機構合計認購近88%，所有債券將在香港聯交所掛牌上市。",
-      "source_name": "China Daily HK",
-      "source_url": "https://www.chinadailyhk.com/article/393322"
-    },
-    {
-      "title": "4. 紐約梅隆iFlow資金監測：海外資本正借道香港最深流動性池謹慎重建中國資產敞口",
-      "summary": "紐約梅隆銀行（BNY）最新機構資本流動（iFlow）研究顯示，隨著中國漸進式財政與貨幣政策擴圍，國際投資者視香港為重建中國敞口最核心的離岸通道。港股機構權益持倉評分從10月底的0.95回升至11月中旬的0.98，日度資金流呈現持續正流入。雖然總體風險偏好尚未轉入全面進攻，但已顯著擺脫前期的極度防禦性配置，港股流動性樞紐角色再度獲驗證。",
-      "source_name": "FXStreet",
-      "source_url": "https://www.fxstreet.com/news/hong-kong-policy-support-drives-cautious-re-engagement-bny-202611200924"
-    },
-    {
-      "title": "5. 流動性抽緊觸發跨資產無差別踩踏：現貨黃金急跌至3,536美元，比特幣跌穿60,000美元支撐",
-      "summary": "海外市場週五呈現典型的流動性擠壓現象，權益市場暴跌引致槓桿多頭遭遇嚴苛追加保證金通知，迫使機構投資者無差別拋售流動性充裕的避險與另類資產。現貨黃金單日急挫2.45%（跌逾88美元）至每盎司3,536美元；現貨白銀大跌3.70%至41.29美元；加密市場同步跳水，比特幣盤中擊穿60,000美元大關跌至58,807美元低位，以太坊重挫逾7%。",
-      "source_name": "FXStreet",
-      "source_url": "https://www.fxstreet.com/cryptocurrencies/news/gold-testing-3500-bitcoin-crashed-to-58800-brutal-but-expected-202611201530"
-    },
-    {
-      "title": "6. 中原CCL指數連跌6週報157.56點創近半年低位，豪宅與大灣區高保額儲蓄險獲避險資金青睞",
-      "summary": "中原地產公佈最新中原城市領先指數（CCL）按週續跌0.66%至157.56點，連跌6週累跌2.26%，創25週新低，反映美聯儲利率路徑不確定性及一手新盤貼市定價對二手樓價的壓制。然而二手樓價年內仍累漲10.4%，且全港租金回報率維持在歷史高位。受全球市場動盪影響，大灣區高淨值客戶近期大幅加快將流動資本轉化為香港核心地段頂級豪宅及離岸多幣種儲蓄分紅終身壽險。",
+      "title": "1. 3.18億美元保單破世界紀錄：香港保險加速成為離岸家族傳承核心架構",
+      "summary": "富衛香港售出面額達3.18億美元之單一巨額人壽保單，打破健力士世界紀錄。業界指出，隨著稅務合規要求趨緊及潛在遺產稅預期，離岸大額保單憑藉確定性保密支付、無需遺產認證及費用彈性，正逐步成為高淨值家族替代傳統信託的首選財富架構工具。",
       "source_name": "South China Morning Post",
-      "source_url": "https://www.scmp.com/business/article/3287315/hong-kong-secondary-home-prices-ccl-wealth-management"
+      "source_url": "https://www.scmp.com/business/banking-finance/article/3286782/hong-kong-insurers-expanding-wealth-management-policy-sets-record"
+    },
+    {
+      "title": "2. 亞洲保險論壇匯聚全球監管：國家金管總局表態全力深化大灣區保險互聯互通",
+      "summary": "亞洲保險論壇與國際保險監督官協會（IAIS）年會於香港閉幕。國家金管總局副局長叢林發表主旨演講，強調中央支持香港強化國際風險管理中心地位，推進大灣區跨境保險互聯互通、支持內地機構在港發行巨災債券及離岸再保險深度協同；保監局主席姚建華呼籲險企強化資產負債管理以應對複合型系統性風險。",
+      "source_name": "Hong Kong Insurance Authority",
+      "source_url": "https://www.ia.org.hk/en/infocenter/press_releases/20261113.html"
+    },
+    {
+      "title": "3. 家族辦公室傳承斷層警示：85%富裕人士有意傳承，僅一成具備完整傳承規劃",
+      "summary": "最新《火炬傳承》財富調查顯示，高達85%的香港受訪者明確表示希望將財富傳承至下一代，但僅10%已建立完備傳承方案並與繼承人詳細溝通。家族企業受訪者中，78%擔憂財富無法延續至下一代，二代資產管理能力不足、法律稅務變動及市場波動被列為三大首要顧慮。",
+      "source_name": "Sun Life Hong Kong",
+      "source_url": "https://www.hubbis.com/article/most-hong-kongers-plan-to-pass-on-wealth-few-prepared-sunlife-survey"
+    },
+    {
+      "title": "4. 科技股雪崩觸發全球「黑色星期五」：標普道指墮入回調，納指抹平年內漲幅",
+      "summary": "外圍市場週五遭遇劇烈拋售，標普500指數暴挫3.7%至6,910.39點，較歷史高位下挫逾10%步入回調；道指重挫近950點；納指暴跌5.28%創下本輪調整最深跌幅。英偉達受會計審查消息重挫14%，微軟、博通跌幅超10%，恐慌指數VIX狂飆26.2%至35.89，亞太台指與日韓指數同步崩跌逾5%。",
+      "source_name": "Associated Press",
+      "source_url": "https://www.washingtonpost.com/business/2026/11/20/stock-market-crash-correction-sp500-nasdaq/"
+    },
+    {
+      "title": "5. 美債收益率急挫倒掛陡峭化：避險資金大舉掃貨，10年期美債利率收跌至4.92%",
+      "summary": "儘管美聯儲理事庫克發表鷹派言論警示通脹抬頭，但在股市黑色星期五的流動性衝擊下，全球資金瘋狂湧入美國國債避險。10年期美債收益率急挫12個基點至4.92%，2年期收益率下跌13個基點至4.63%，10年減2年期利差走闊至+29個基點，債市定價重心轉向經濟降溫與信貸收縮風險。",
+      "source_name": "Federal Reserve & U.S. Treasury",
+      "source_url": "https://fred.stlouisfed.org/series/T10Y2Y"
+    },
+    {
+      "title": "6. 加密市場遭遇24億美元爆倉巨震：比特幣週末於60,000美元大關展開多空爭奪",
+      "summary": "全網加密衍生品在過去24小時內錄得超過24億美元的多頭爆倉，比特幣一度插針下探至57,000美元創下逾兩年新低，隨後在週末回升至60,284美元窄幅震盪。黃金因流動性保證金追加下跌近4%至3,539美元，原油則在地緣供應疑慮下微幅反彈至83.62美元。",
+      "source_name": "CoinDesk & Eurasia Business News",
+      "source_url": "https://www.coindesk.com/markets/2026/11/21/bitcoin-liquidations-rebound-60k/"
     }
   ]
 }
